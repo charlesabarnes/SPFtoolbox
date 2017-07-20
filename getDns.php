@@ -9,7 +9,7 @@ class DNS{
     public function getDNS($hostname){
     $response = dns_get_record ($hostname , DNS_TXT);
         foreach($response as $result){
-            echo '<pre>'; print_r(json_encode($result, JSON_PRETTY_PRINT)); echo '</pre>';
+            print_r(json_encode($result, JSON_PRETTY_PRINT));
             
         }       
     }

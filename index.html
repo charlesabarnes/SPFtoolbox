@@ -1,12 +1,27 @@
 <html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
+<script>
+$(document).ready(function(){
+    $('#domain').keypress(function(e){
+      if(e.keyCode==13)
+      $('#submit').click();
+    });
+});
+</script>
+</head>
 <body>
 
-<form action="getDns.php" method="get">
-Domain: <input type="text" name="domain"><br>
-<input type="submit">
+<form>
+Domain: <input type="text" name="domain" id="domain"><br>
+<select id="file">
+  <option value="getDns.php">SPF</option>
+  <option value="getIp.php">IP</option>
+  <option value="getMx.php">Mx</option>
+  <option value="getWhois.php">Whois</option>
+</select>
+<input type="button" onclick="fun();" value="submit" id="submit"> </input>
 </form>
-</php
-echo getDNS('charlesabarnes.com');
-?>
+<script type='text/javascript' src='javascript/main.js'></script>
 </body>
 </html>
