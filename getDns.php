@@ -8,6 +8,7 @@ header('Content-Type: application/json');
 class DNS{
     public function getDNS($hostname){
     $response = dns_get_record ($hostname , DNS_TXT);
+      
      print_r(json_encode($response, JSON_PRETTY_PRINT));     
     }
 }
