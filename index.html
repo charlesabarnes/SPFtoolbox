@@ -1,33 +1,81 @@
 <html>
 <head>
-<meta http-equiv="cache-control" content="max-age=0" />
-<meta http-equiv="cache-control" content="no-cache" />
-<meta http-equiv="expires" content="0" />
-<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
-<meta http-equiv="pragma" content="no-cache" />
-    
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<link href="styles/style.css" rel="stylesheet">
+
 <script>
-$(document).ready(function(){
-    $('#domain').keypress(function(e){
-      if(e.keyCode==13)
-      $('#submit').click();
-    });
-});
+    //Counts the number of requests in this session
+    var requestNum = 0;
+    //Choose the correct script to run based on dropdown selection
+    function callRoute(callType) {
+        if (callType == "spf") {
+            returnDnsDetails(document.getElementById("domain").value)
+        }
+    }
+
+    //Get DNS Details
+    function returnDnsDetails(domain) {
+        //checks for valid input
+        if (domain.length == 0) {
+            document.getElementById("txtHint").innerHTML = " Please enter a valid domain";
+            return;
+        } else {
+            var xmlhttp = new XMLHttpRequest();
+            
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    //Clears the hint field
+                    document.getElementById("txtHint").innerHTML = "";
+                    //parse the response into a JS Object
+                    dnsResp = JSON.parse(this.responseText);
+                    console.log(dnsResp);
+                    //creates thes the table to store the response details each table has a unique class
+                    $(".responseTable").prepend("<table class=\"responseRow" + requestNum + "\"></table>");
+                    //iterates through object keys
+                    for (i = 0, len = Object.keys(dnsResp).length; i < len; i++) {
+                        $(".responseRow" + requestNum).append("<tr><td>" + Object.getOwnPropertyNames(dnsResp)[i] + ":</td><td>" + dnsResp[Object.keys(dnsResp)[i]] + "</td></tr>");
+                    }
+                    requestNum++;
+                }
+            };
+            xmlhttp.open("GET", "getDNS.php?q=" + domain, true);
+            xmlhttp.send();
+            
+        }
+    }
+
 </script>
 </head>
 <body>
-
-<form>
-Domain: <input type="text" name="domain" id="domain"><br>
-<select id="file">
-  <option value="getDns.php">SPF</option>
-  <option value="getIp.php">IP</option>
-  <option value="getMx.php">Mx</option>
-  <option value="getWhois.php">Whois</option>
-</select>
-<input type="button" onclick="fun();" value="submit" id="submit">
-</form>
-<script type='text/javascript' src="javascript/main.js?random=<?php echo filemtime('main.js'); ?>"></script>
+    <div class="container">
+        <div class="row" id="top-row">
+            <form>
+                Domain: <input type="text" name="domain" id="domain"><span id="txtHint" style="color: red;"></span><br>
+                <input type="button" onclick="callRoute(file.value)" value="Submit" />
+                <select id="file">
+                    <option value="spf">SPF</option>
+                    <option value="getIp.php">IP</option>
+                    <option value="getMx.php">Mx</option>
+                    <option value="getWhois.php">Whois</option>
+                </select>
+            </form>
+            <div>
+                <div id="responseArea">
+                    <div  class="responseTable">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
