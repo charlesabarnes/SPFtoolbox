@@ -65,10 +65,13 @@
                 Domain: <input type="text" name="domain" id="domain"><span id="txtHint" style="color: red;"></span><br>
                 <input type="button" onclick="callRoute(file.value)" value="Submit" />
                 <select id="file">
-                    <option value="getDns.php" >SPF</option>
-                    <option value="getIp.php" f>IP</option>
+                    <option value="getTxt.php">SPF/TXT</option>
+                    <option value="getA.php">IP</option>
+                    <option value="getAAAA.php">IPV6</option>
                     <option value="getMx.php">Mx</option>
                     <option value="getWhois.php">Whois</option>
+                    <option value="getHinfo.php">hinfo</option>
+                    <option value="getAll.php">All</option>
                 </select>
             </form>
             <div>
