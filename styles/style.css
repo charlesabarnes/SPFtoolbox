@@ -1,0 +1,35 @@
+h4 {
+  margin-top: 25px;
+}
+.row {
+  margin: 20px;
+}
+
+[class*="responseRow"] {
+  margin: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #eee;
+  background-color: rgba(86,61,124,.15);
+  border: 1px solid #ddd;
+  border: 1px solid rgba(86,61,124,.2);
+}
+
+[class*="responseRow"] td {
+	margin: 5px;
+	background-color: white;
+}
+	
+
+hr {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+#top-row {
+  margin: 25px;
+}
+
+input {
+	margin: 10px;
+}
