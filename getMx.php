@@ -11,8 +11,8 @@ class Mx{
         print_r(json_encode($response, JSON_PRETTY_PRINT));
     }
 }
-$bullhorn = new Mx;
-$bullhorn->getDNS($_GET['domain']);
+$object = new Mx;
+$object->getDNS($_GET['domain']);
 
 
 ?>

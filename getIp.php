@@ -9,8 +9,8 @@ class IP{
        echo "{ \n \"IP\": \""; print_r(gethostbyname($hostname)); echo "\" \n}";
     }
 }
-$bullhorn = new IP;
-$bullhorn->getDNS($_GET['domain']);
+$object = new IP;
+$object->getDNS($_GET['domain']);
 
 
 ?>

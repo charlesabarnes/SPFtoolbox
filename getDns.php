@@ -12,8 +12,8 @@ class DNS{
      print_r(json_encode($response, JSON_PRETTY_PRINT));     
     }
 }
-$bullhorn = new DNS;
-$bullhorn->getDNS($_GET['domain']);
+$object = new DNS;
+$object->getDNS($_GET['domain']);
 
 
 ?>
