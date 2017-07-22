@@ -8,10 +8,7 @@ header('Content-Type: application/json');
 class Mx{
     public function getDNS($hostname){
     $response = dns_get_record ($hostname , DNS_MX);
-        foreach($response as $result){
-            print_r(json_encode($result, JSON_PRETTY_PRINT));
-            
-        }       
+        print_r(json_encode($response, JSON_PRETTY_PRINT));
     }
 }
 $bullhorn = new Mx;

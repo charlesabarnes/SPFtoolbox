@@ -6,7 +6,7 @@ header("Pragma: no-cache");
 
 class IP{
     public function getDNS($hostname){        
-        echo '<pre><br> <b>DNS host</b><br>'; print_r(gethostbyname($hostname)); echo '</pre>';
+        print_r(gethostbyname($hostname));
     }
 }
 $bullhorn = new IP;
