@@ -15,6 +15,8 @@
             var xmlhttp = new XMLHttpRequest();
             
             xmlhttp.onreadystatechange = function () {
+                var date = new Date();
+                var requestNum = date.getTime();
                 if (this.readyState == 4 && this.status == 200) {
                     //Clears the hint field
                     document.getElementById("txtHint").innerHTML = "";
