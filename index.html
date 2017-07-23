@@ -17,44 +17,7 @@
 
 <link href="styles/style.css" rel="stylesheet">
 
-<script>
-    //Counts the number of requests in this session
-    var requestNum = 0;
-    //Choose the correct script to run based on dropdown selection
-    function callRoute(callType) {
-            returnDnsDetails(document.getElementById("domain").value, callType)
-    }
-
-    //Get DNS Details
-    function returnDnsDetails(domain, callType) {
-        //checks for valid input
-        if (domain.length == 0) {
-            document.getElementById("txtHint").innerHTML = " Please enter a valid domain";
-            return;
-        } else {
-            var xmlhttp = new XMLHttpRequest();
-            
-            xmlhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    //Clears the hint field
-                    document.getElementById("txtHint").innerHTML = "";
-                    //parse the response into a JS Object
-                    dnsResp = JSON.parse(this.responseText);
-                    console.log(dnsResp);
-                    //creates thes the table to store the response details each table has a unique class
-                    $(".responseTable").prepend("<table class=\"responseRow" + requestNum + "\"></table>");
-                    //iterates through object keys
-                    for (i = 0, len = Object.keys(dnsResp).length; i < len; i++) {
-                        $(".responseRow" + requestNum).append("<tr><td>" + Object.getOwnPropertyNames(dnsResp)[i] + ":</td><td>" + dnsResp[Object.keys(dnsResp)[i]] + "</td></tr>");
-                    }
-                    requestNum++;
-                }
-            };
-            xmlhttp.open("GET", callType + "?domain=" + domain, true);
-            xmlhttp.send();
-            
-        }
-    }
+<script src ="javascript/main.js">
 
 </script>
 </head>
