@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+    "icons": {
+          "16": "icon16.png"
+        },
+  "name": "SPF Toolbox",
+  "description": "SPFtoolbox is an Application to check simple infomation such as SPF, DNS records, and more",
+  "version": "0.74",
+
+  "browser_action": {
+    "default_icon": "icon16.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "https://ajax.googleapis.com/",
+    "tabs",
+    "clipboardWrite", 
+    "contextMenus",
+    "http://charlesabarnes.com/"
+  ]
+}

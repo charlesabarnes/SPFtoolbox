@@ -1,8 +1,17 @@
+$(document).ready(function(){
+    $("#domain").keyup(function(event){
+        if(event.keyCode == 13){
+            $("#submit").click();
+        }
+    });
+});
+
+window.onload = function() {
 //Counts the number of requests in this session
     var requestNum = 0;
     //Choose the correct script to run based on dropdown selection
-    function callRoute(callType) {
-            returnDnsDetails(document.getElementById("domain").value, callType)
+    document.getElementById("submit").onclick = function callRoute() {
+            returnDnsDetails(document.getElementById("domain").value, document.getElementById("file").value)
     }
 
     //Get DNS Details
@@ -48,8 +57,9 @@
                     requestNum++;
                 }
             };
-            xmlhttp.open("GET", callType + "?domain=" + domain, true);
+            xmlhttp.open("GET", "http://charlesabarnes.com/SPFtoolbox/" + callType + "?domain=" + domain, true);
             xmlhttp.send();
             
         }
     }
+}
