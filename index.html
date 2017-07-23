@@ -17,8 +17,14 @@
 
 <link href="styles/style.css" rel="stylesheet">
 
-<script src ="javascript/main.js">
+<script src ="javascript/main.js"></script>
 
+<script>
+$("#domain").keyup(function(event){
+    if(event.keyCode == 13){
+        $("#submit").click();
+    }
+});
 </script>
 </head>
 <body>
@@ -26,7 +32,7 @@
         <div class="row" id="top-row">
             <form>
                 Domain: <input type="text" name="domain" id="domain"><span id="txtHint" style="color: red;"></span><br>
-                <input type="button" onclick="callRoute(file.value)" value="Submit" />
+                <input type="button" onclick="callRoute(file.value)" value="Submit" id="submit"/>
                 <select id="file">
                     <option value="getTxt.php">SPF/TXT</option>
                     <option value="getA.php">IP</option>
