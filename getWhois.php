@@ -4,10 +4,6 @@ header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 header('Content-Type: application/json');
 
-$out = str_replace('{self}', $_SERVER['PHP_SELF'], $out);
-
-$resout = extract_block($out, 'results');
-
 if (isSet($_GET['domain']))
 	{
 	$query = $_GET['domain'];
@@ -57,8 +53,7 @@ if (isSet($_GET['domain']))
 else
 	$resout = '';
 
-$out = str_replace('{ver}',$whois->CODE_VERSION,$out);
-exit(str_replace('{results}', $resout, $out));
+
 
 //-------------------------------------------------------------------------
 
