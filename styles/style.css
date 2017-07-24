@@ -1,18 +1,22 @@
-h4 {
 
-}
-.row {
 
-}
 
 [class*="responseRow"] {
-
+    background-color: #ccc;
+    margin: 10px;
 }
 
 [class*="responseRow"] td {
-
+    background-color: #ccc;
 }
-	
+
+.btn, th {
+    background-color: #44c0f0 !important;
+}
+
+th {
+    column-span: 2;
+}
 
 hr {
 
@@ -26,6 +30,28 @@ input, select, .form-label {
 
 }
 
-.form-control, .form-control {
+.form-control {
+    align-items: center;
+    width:auto;
+    float: left;
+    margin: 10px;
+    text-align: center;
+}
 
+.form-label {
+    align-items: center;
+    width:auto;
+    float: left;
+    margin: 10px 10px 10px 0;
+    text-align: center;
+    padding:10 0 10 0;
+}
+
+* {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.logo-style1 {
+    color:#44c0f0;
+    font-weight: bold;
 }
