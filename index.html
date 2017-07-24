@@ -39,9 +39,7 @@ $(document).ready(function(){
         </div>
         <div class="row">
             <div class="col-md-6">
-                <form>
-                    <span class="form-label">Domain:&nbsp;</span><input type="text" name="domain" id="domain" class="form-control"><span id="txtHint" style="color: red;"></span>
-                
+                    <span class="form-label">Domain:&nbsp;</span><input type="text" name="domain" id="domain" class="form-control"><span id="txtHint" style="color: red;"></span>                
                     <select id="file" class="form-control">
                         <option value="getTxt.php">SPF/TXT</option>
                         <option value="getA.php">IP</option>
@@ -51,12 +49,10 @@ $(document).ready(function(){
                         <option value="getHinfo.php">hinfo</option>
                         <option value="getAll.php">All</option>
                     </select>
-                    <input type="button" onclick="callRoute(file.value)" value="submit" class="form-control btn"/>
-                </form>
+                    <input type="button" onclick="callRoute(file.value)" id="submit" value="submit" class="form-control btn"/>
             </div>
             <div class="col-md-6"></div>
             <div>
-
             </div>
         </div>
         <div class="row">
