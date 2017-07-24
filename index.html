@@ -17,11 +17,20 @@
 
 <link href="styles/style.css" rel="stylesheet">
 
-<script src ="javascript/main.js">
+<script src ="javascript/main.js"></script>
 
-</script>
+
 </head>
 <body>
+    <script>
+$(document).ready(function(){
+    $("#domain").keyup(function(event){
+        if(event.keyCode == 13){
+            $("#submit").click();
+        }
+    });
+});
+</script>
     <div class="container">
         <div class="row" id="top-row">
             <div class="col-md-12">

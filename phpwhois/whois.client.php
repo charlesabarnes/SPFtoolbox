@@ -60,7 +60,7 @@ class WhoisClient {
 		);
 
 	// This release of the package
-	var $CODE_VERSION = '4.2.2';
+	var $CODE_VERSION = '4.2.5';
 	
 	// Full code and data version string (e.g. 'Whois2.php v3.01:16')
 	var $VERSION;
@@ -194,9 +194,12 @@ class WhoisClient {
 
 			while (!feof($ptr))
 				{
-				if (stream_select($r,$null,$null,$this->STIMEOUT))
+				if (!empty($r))
 					{
-					$raw .= fgets($ptr, $this->BUFFER);
+					if (stream_select($r,$null,$null,$this->STIMEOUT))
+						{
+						$raw .= fgets($ptr, $this->BUFFER);
+						}
 					}
 
 				if (time()-$start > $this->STIMEOUT)
