@@ -17,16 +17,24 @@
 
 <link href="styles/style.css" rel="stylesheet">
 
-<script src ="javascript/main.js">
+<script src ="javascript/main.js"></script>
 
-</script>
+
 </head>
 <body>
+    <script>
+$(document).ready(function(){
+    $("#domain").keyup(function(event){
+        if(event.keyCode == 13){
+            $("#submit").click();
+        }
+    });
+});
+</script>
     <div class="container">
         <div class="row" id="top-row">
-            <form>
                 Domain: <input type="text" name="domain" id="domain"><span id="txtHint" style="color: red;"></span><br>
-                <input type="button" onclick="callRoute(file.value)" value="Submit" />
+                <input type="button" onclick="callRoute(file.value)" value="Submit" id="submit"/>
                 <select id="file">
                     <option value="getTxt.php">SPF/TXT</option>
                     <option value="getA.php">IP</option>
@@ -36,7 +44,6 @@
                     <option value="getHinfo.php">hinfo</option>
                     <option value="getAll.php">All</option>
                 </select>
-            </form>
             <div>
                 <div id="responseArea">
                     <div  class="responseTable">
