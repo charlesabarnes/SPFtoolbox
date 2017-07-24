@@ -1,7 +1,7 @@
 # SPFtoolbox
 
 [![CDNJS](https://img.shields.io/cdnjs/v/jquery.svg)](https://cdnjs.com/libraries/jquery)
-[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/nimelepbpejjlbmoobocpfnjhihnpked.svg)](https://chrome.google.com/webstore/detail/daioadpjniipfipfmenkefjpdncbekcd)
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/daioadpjniipfipfmenkefjpdncbekcd.svg)](https://chrome.google.com/webstore/detail/daioadpjniipfipfmenkefjpdncbekcd)
 [![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg?label=my-website)](http://charlesabarnes.com)
 
 
