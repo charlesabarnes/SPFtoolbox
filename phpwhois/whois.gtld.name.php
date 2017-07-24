@@ -23,31 +23,34 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
-*/
+ */
 
-if(!defined('__HU_HANDLER__'))
-  define('__HU_HANDLER__',1);
+if (!defined('__NAME_HANDLER__'))
+	define('__NAME_HANDLER__', 1);
 
 require_once('whois.parser.php');
 
-class hu_handler
+class name_handler
 	{
-	function parse ($data_str, $query)
+	function parse($data_str, $query)
 		{
 		$items = array(
-		    'domain:' => 'domain.name',
-		    'record created:' => 'domain.created'
-	        );
+                'owner' => 'REGISTRANT CONTACT INFO',
+                'admin' => 'ADMINISTRATIVE CONTACT INFO',
+                'tech' => 'TECHNICAL CONTACT INFO',
+                'billing' => 'BILLING CONTACT INFO',
+                'domain.name' => 'Domain Name:',
+                'domain.sponsor' => 'Registrar',
+                'domain.created' => 'Creation Date',
+                'domain.expires' => 'Expiration Date'
+		            );
 
-		$r['regrinfo'] = generic_parser_b($data_str['rawdata'],$items,'ymd');
+		$extra = array(
+						'phone:' => 'phone',
+						'email address:' => 'email'
+						);
 
-		if (isset($r['regrinfo']['domain']))
-		    $r['regrinfo']['registered'] = 'yes';
-		else
-		    $r['regrinfo']['registered'] = 'no';
-
-		$r['regyinfo'] = array('referrer'=>'http://www.nic.hu','registrar'=>'HUNIC');
-		return $r;
+		return easy_parser($data_str, $items, 'y-m-d', $extra, false, true);
 		}
 	}
 ?>

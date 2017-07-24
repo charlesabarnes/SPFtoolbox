@@ -41,8 +41,9 @@ class be_handler
                 'domain.created'	=> 'Registered:',
                 'owner'				=> 'Licensee:',
                 'admin'				=> 'Onsite Contacts:',
-                'tech'				=> 'Agent Technical Contacts:',
-				'agent'				=> 'Agent:'
+                'tech'				=> 'Registrar Technical Contacts:',
+				'agent'				=> 'Registrar:',
+				'agent.uri'			=> 'Website:'
 				);
 
 		$trans = array(
@@ -60,7 +61,7 @@ class be_handler
 				{
 				$sponsor = get_contact($r['regrinfo']['agent'],$trans);
 				unset($r['regrinfo']['agent']);
-				$r['regrinfo']['domain']['sponsor'] = $sponsor['name'];
+				$r['regrinfo']['domain']['sponsor'] = $sponsor;
 				}
 
 			$r = format_dates($r, '-mdy');

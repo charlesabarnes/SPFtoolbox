@@ -2,7 +2,7 @@
 /*
 Whois.php        PHP classes to conduct whois queries
 
-Copyright (C)1999,2005 easyDNS Technologies Inc. & Mark Jeftovic
+Copyright (C) 2011 Bernhard Reutner Fischer <rep.dot.nop@gmail.com>
 
 Maintained by David Saez
 
@@ -23,30 +23,36 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
-*/
+ */
 
-if(!defined('__HU_HANDLER__'))
-  define('__HU_HANDLER__',1);
+if (!defined('__BH_HANDLER__'))
+	define('__BH_HANDLER__', 1);
 
 require_once('whois.parser.php');
 
-class hu_handler
+class bh_handler
 	{
-	function parse ($data_str, $query)
+	function parse($data_str, $query)
 		{
 		$items = array(
-		    'domain:' => 'domain.name',
-		    'record created:' => 'domain.created'
+		    'Sponsoring Registrar Name:' => 'domain.sponsor.name',
+		    'Sponsoring Registrar Email:' => 'domain.sponsor.email',
+		    'Sponsoring Registrar Uri:' => 'domain.sponsor.uri',
+		    'Sponsoring Registrar Phone:' => 'domain.sponsor.phone'
 	        );
-
-		$r['regrinfo'] = generic_parser_b($data_str['rawdata'],$items,'ymd');
-
-		if (isset($r['regrinfo']['domain']))
-		    $r['regrinfo']['registered'] = 'yes';
-		else
+		$i = generic_parser_b($data_str['rawdata'], $items);
+		$r['regrinfo'] = generic_parser_b($data_str['rawdata']);
+		if (isset($r['regrinfo']['domain'])
+		    && is_array($r['regrinfo']['domain']))
+		    $r['regrinfo']['domain']['sponsor'] = $i['domain']['sponsor'];
+		if (empty($r['regrinfo']['domain']['created']))
 		    $r['regrinfo']['registered'] = 'no';
-
-		$r['regyinfo'] = array('referrer'=>'http://www.nic.hu','registrar'=>'HUNIC');
+		else
+		    $r['regrinfo']['registered'] = 'yes';
+		$r['regyinfo'] = array(
+                    'referrer' => 'http://www.nic.bh/',
+                    'registrar' => 'NIC-BH'
+                    );
 		return $r;
 		}
 	}
