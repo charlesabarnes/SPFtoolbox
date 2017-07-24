@@ -1,35 +1,57 @@
-h4 {
-  margin-top: 25px;
-}
-.row {
-  margin: 20px;
-}
+
+
 
 [class*="responseRow"] {
-  margin: 20px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  background-color: #eee;
-  background-color: rgba(86,61,124,.15);
-  border: 1px solid #ddd;
-  border: 1px solid rgba(86,61,124,.2);
+    background-color: #ccc;
+    margin: 10px;
 }
 
 [class*="responseRow"] td {
-	margin: 5px;
-	background-color: white;
+    background-color: #ccc;
 }
-	
+
+.btn, th {
+    background-color: #44c0f0 !important;
+}
+
+th {
+    column-span: 2;
+}
 
 hr {
-  margin-top: 40px;
-  margin-bottom: 40px;
+
 }
 
 #top-row {
-  margin: 25px;
+
 }
 
-input {
-	margin: 10px;
+input, select, .form-label {
+
+}
+
+.form-control {
+    align-items: center;
+    width:auto;
+    float: left;
+    margin: 10px;
+    text-align: center;
+}
+
+.form-label {
+    align-items: center;
+    width:auto;
+    float: left;
+    margin: 10px 10px 10px 0;
+    text-align: center;
+    padding:10 0 10 0;
+}
+
+* {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.logo-style1 {
+    color:#44c0f0;
+    font-weight: bold;
 }
