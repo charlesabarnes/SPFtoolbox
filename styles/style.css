@@ -1,4 +1,6 @@
-
+* {
+    color: #333;
+}
 
 
 [class*="responseRow"] {
@@ -10,12 +12,35 @@
     background-color: #ccc;
 }
 
-.btn, th {
-    background-color: #44c0f0 !important;
+table {
+    width: 100%;
+    border: 0;
+    border-radius: 10px;
 }
 
-th {
-    column-span: 2;
+.btn, .thead {
+    background-color: #44c0f0 !important;
+}
+.thead {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: white;
+
+}
+
+.thead {
+    
+    border-radius: 10px 10px 0 0;
+}
+
+td {
+    padding: 5px;
+    text-align: left;
+}
+
+.left-row {
+    width: 60px;
 }
 
 hr {
