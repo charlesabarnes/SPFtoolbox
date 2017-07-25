@@ -5,7 +5,7 @@
         },
   "name": "SPF Toolbox",
   "description": "SPFtoolbox is an Application to check simple infomation such as SPF, DNS records, and more",
-  "version": "0.74",
+  "version": "0.88",
 
   "browser_action": {
     "default_icon": "icon16.png",

@@ -21,28 +21,52 @@
 
 </head>
 <body>
+    <script>
+$(document).ready(function(){
+    $("#domain").keyup(function(event){
+        if(event.keyCode == 13){
+            $("#submit").click();
+        }
+    });
+});
+</script>
     <div class="container">
         <div class="row" id="top-row">
-                Domain: <input type="text" name="domain" id="domain"><span id="txtHint" style="color: red;"></span><br>
-                <input type="button" value="Submit" id="submit"/>
-                <select id="file">
-                    <option value="getTxt.php">SPF/TXT</option>
-                    <option value="getA.php">IP</option>
-                    <option value="getAAAA.php">IPV6</option>
-                    <option value="getMx.php">Mx</option>
-                    <option value="getWhois.php">Whois</option>
-                    <option value="getHinfo.php">hinfo</option>
-                    <option value="getAll.php">All</option>
-                </select>
+            <div class="col-md-12">
+                <H1 class="logo"><Span class = "logo-style1">SPF</Span>Toolbox</H1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                    <span class="form-label">Domain:&nbsp;</span><input type="text" name="domain" id="domain" class="form-control">
+                    <select id="file" class="form-control">
+                        <option value="getTxt.php">SPF/TXT</option>
+                        <option value="getA.php">IP</option>
+                        <option value="getAAAA.php">IPV6</option>
+                        <option value="getMx.php">Mx</option>
+                        <option value="getWhois.php">Whois</option>
+                        <option value="getHinfo.php">hinfo</option>
+                        <option value="getAll.php">All</option>
+                    </select>
+                    <input type="button" onclick="callRoute(file.value)" id="submit" value="submit" class="form-control btn"/>
+            </div>
+            <div class="col-md-6"></div>
             <div>
+
+                <div class="col-md-6"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><span id="txtHint" style="color: red;"></span></div>
+        </div>
+        <div class="row">
                 <div id="responseArea">
                     <div  class="responseTable">
                         
                     </div>
                 </div>
-            </div>
             
-    <i>UI by Michael Dill. | By: <a href="http://charlesabarnes.com/">Charles Barnes</a></i>
+    <i>UI by Michael Dill | By: <a href="http://charlesabarnes.com/">Charles Barnes</a></i>
         </div>
     </div>
 </body>
