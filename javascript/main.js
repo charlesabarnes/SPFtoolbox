@@ -28,11 +28,11 @@
 
                     //creates thes the table to store the response details each table has a unique class
                     $(".responseTable").prepend("<table class=\"responseRow" + requestNum + "\"></table>");
-                    $(".responseRow" + requestNum).append("<th>" + callType + "</th>");
+                    $(".responseRow" + requestNum).append("<caption>" + callType + "</caption>");
                     for (i = 0, len = dnsResp.length; i < len; i++) {
                         var jsonData = dnsResp[i];
                         console.log(jsonData);
-                        
+                        $(".responseRow" + requestNum).append('___________________________________');
                         //iterates through object keys
                         for (j = 0, len = Object.keys(jsonData).length; j < len; j++) {
                             $(".responseRow" + requestNum).append("<tr><td>" + Object.getOwnPropertyNames(jsonData)[j] + ":</td><td>" + jsonData[Object.keys(jsonData)[j]] + "</td></tr>");
