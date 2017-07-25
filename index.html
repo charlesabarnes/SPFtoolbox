@@ -22,15 +22,6 @@
 
 </head>
 <body>
-    <script>
-$(document).ready(function(){
-    $("#domain").keyup(function(event){
-        if(event.keyCode == 13){
-            $("#submit").click();
-        }
-    });
-});
-</script>
     <div class="container">
         <div class="row" id="top-row">
             <div class="col-md-12">
@@ -49,7 +40,7 @@ $(document).ready(function(){
                         <option value="getHinfo.php">hinfo</option>
                         <option value="getAll.php">All</option>
                     </select>
-                    <input type="button" onclick="callRoute(file.value)" id="submit" value="submit" class="form-control btn"/>
+                    <input type="button" id="submit" value="submit" class="form-control btn"/>
             </div>
             <div class="col-md-6"></div>
             <div>
