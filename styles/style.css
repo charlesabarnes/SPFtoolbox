@@ -43,6 +43,11 @@ td {
     width: 60px;
 }
 
+.last-row {
+    height: 1em;
+    background-color: white !important;
+}
+
 hr {
 
 }

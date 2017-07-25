@@ -11,10 +11,16 @@
         } else if (callType == "getMx.php") {
             return "MX Lookup"
         } else if (callType =="getA.php") {
-            return "IP Record Lookup"
-        }      
-        
-        else {
+            return "IP Lookup"
+        } else if (callType == "getAll.php") {
+            return "Look up all the things"
+        } else if (callType == "getAAAA.php") {
+            return "IPV6 Lookup"
+        } else if (callType == "getWhois.php") {
+            return "Who Is Lookup"
+        } else if (callType == "getHinfo.php") {
+            return "H Info Lookup"
+        } else {
             return callType
         }
 
@@ -53,17 +59,16 @@
                         for (i = 0, len = dnsResp.length; i < len; i++) {
                             var jsonData = dnsResp[i];
                             console.log(jsonData);
-                            
+
                             //iterates through object keys
                             for (j = 0, len = Object.keys(jsonData).length; j < len; j++) {
                                 $(".responseRow" + requestNum).append("<tr><td class='left-row'>" + Object.getOwnPropertyNames(jsonData)[j] + ":</td><td>" + jsonData[Object.keys(jsonData)[j]] + "</td></tr>");
                             }
+                            $(".responseRow" + requestNum).append("<tr><td colspan='2' class='last-row'></td></tr>");
                         }
                    
                     }
-                    //$(".responseRow" + requestNum).append("<tr><td>" + dnsResp[0].host + "</td></tr>");
-
-                    
+                 
 
                     
                 }
