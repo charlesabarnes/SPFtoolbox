@@ -52,6 +52,16 @@ hr {
 
 }
 
+caption { 
+    background-color: rgb(90,85,90);
+    font-weight: bold;
+    color: #44c0f0; 
+    padding-top: .7em; 
+    padding-bottom: .7em; 
+    letter-spacing: .085em;
+    text-align: center !important;
+}
+
 #top-row {
 
 }

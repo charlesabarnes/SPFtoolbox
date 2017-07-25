@@ -47,6 +47,7 @@
                     console.log(dnsResp);
                     console.log(dnsResp.length);
 
+
                     if (dnsResp.length == 0) {
                         $(".responseTable").prepend("<table class=\"responseRow" + requestNum + "\"></table>");
                         $(".responseRow" + requestNum).append("<td colspan='2' class='thead'>" + requestTitle(callType) + "</td>");
