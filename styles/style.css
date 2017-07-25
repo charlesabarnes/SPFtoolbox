@@ -1,7 +1,9 @@
 * {
     color: #333;
 }
-
+.github-corner{
+    color:#fff !important;
+}
 
 [class*="responseRow"] {
     background-color: #ccc;
