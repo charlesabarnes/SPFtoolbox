@@ -6,24 +6,29 @@
     }
 
     function requestTitle(callType){
-        if (callType == "getTxt.php") {
-            return "SPF/TXT Lookup"
-        } else if (callType == "getMx.php") {
-            return "MX Lookup"
-        } else if (callType =="getA.php") {
-            return "IP Lookup"
-        } else if (callType == "getAll.php") {
-            return "Look up all the things"
-        } else if (callType == "getAAAA.php") {
-            return "IPV6 Lookup"
-        } else if (callType == "getWhois.php") {
-            return "Who Is Lookup"
-        } else if (callType == "getHinfo.php") {
-            return "H Info Lookup"
-        } else {
-            return callType
+        switch(callType){
+            case "getTxt.php":
+                return "SPF/TXT Lookup";
+                break;
+            case "getMx.php":
+                return "MX Lookup";
+                break;
+            case "getA.php":
+                return "IP Lookup";
+                break;
+            case "getAll.php":
+                return "All available DNS records";
+                break;
+            case "getAAAA.php":
+                return "IPV6 Lookup";
+                break;
+            case "getWhois.php":
+                return "Who Is Lookup";
+                break;
+            case "getHinfo.php":
+                return "H Info Lookup";
+                break;
         }
-
     }
 
     //Get DNS Details
