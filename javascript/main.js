@@ -63,6 +63,12 @@ window.onload = function() {
                     buildTable(dnsResp, callType);
                 }
             };
+            xmlhttp.onreadystatechange=function() {
+                if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+                    document.getElementById("loading").innerHTML= '';
+                }
+            }
+            document.getElementById("loading").innerHTML = '<div class="sk-three-bounce"><div class="sk-child sk-bounce1"></div><div class="sk-child sk-bounce2"></div><div class="sk-child sk-bounce3"></div></div>'
             xmlhttp.open("GET", callType + "?domain=" + domain, true);
             xmlhttp.send();
             
