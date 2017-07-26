@@ -58,39 +58,44 @@ window.onload = function() {
 
                     //cosole data validation
                     console.log(dnsResp);
-                    console.log(dnsResp.length);
+                    console.log(dnsResp.length);                 
 
-
-                    if (dnsResp.length == 0) {
-                        $(".responseTable").prepend("<table class=\"responseRow" + requestNum + "\"></table>");
-                        $(".responseRow" + requestNum).append("<td colspan='2' class='thead'>" + requestTitle(callType) + "</td>");
-                        $(".responseRow" + requestNum).append("<tr><td colspan='2' style='text-align:center'>NO DATA FOUND</td></tr>");
-                    } else {
-
-                        //creates thes the table to store the response details each table has a unique class
-                        $(".responseTable").prepend("<table class=\"responseRow" + requestNum + "\"></table>");
-                        $(".responseRow" + requestNum).append("<td colspan='2' class='thead'>" + requestTitle(callType) + "</td>");
-                        for (i = 0, len = dnsResp.length; i < len; i++) {
-                            var jsonData = dnsResp[i];
-                            console.log(jsonData);
-
-                            //iterates through object keys
-                            for (j = 0, len = Object.keys(jsonData).length; j < len; j++) {
-                                $(".responseRow" + requestNum).append("<tr><td class='left-row'>" + Object.getOwnPropertyNames(jsonData)[j] + ":</td><td>" + jsonData[Object.keys(jsonData)[j]] + "</td></tr>");
-                            }
-                            $(".responseRow" + requestNum).append("<tr><td colspan='2' class='last-row'></td></tr>");
-                        }
-                   
-                    }
-                 
-
-                    
+                    buildTable(dnsResp, callType);
                 }
             };
             xmlhttp.open("GET", callType + "?domain=" + domain, true);
             xmlhttp.send();
             
         }
-        requestNum++;
+    }
+
+    function buildTable(jsonResp, callType) {
+        if (jsonResp.length == 0) {
+            console.log("requestNum: " + requestNum);
+            $(".responseTable").prepend("<div class = 'responseRow" + requestNum + "'><table></table></div>");
+            $(".responseRow" + requestNum + " Table").append("<tr><td colspan='2' class='thead'>" + requestTitle(callType) + "</td></tr>");
+            $(".responseRow" + requestNum + " Table").append("<tr><td colspan='2' style='text-align:center'>NO DATA FOUND</td></tr>");
+        } else {
+
+            //creates thes the table to store the response details each table has a unique class
+            $(".responseTable").prepend("<div class = 'responseRow" + requestNum + "'><table></table></div>");
+            //Creates title bar
+            $(".responseRow" + requestNum + " Table").append("<tr><td colspan='2' class='thead'>" + requestTitle(callType) + "</td></tr>");
+
+            for (i = 0, len = jsonResp.length; i < len; i++) {
+                var jsonData = jsonResp[i];
+                console.log(jsonData);
+
+                if (i != 0) {$(".responseRow" + (requestNum-1)).append("<Div class = 'responseRow" + requestNum + "'><table></table></div>");}
+                //iterates through object keys
+                for (j = 0, len2 = Object.keys(jsonData).length; j < len2; j++) {
+                    $(".responseRow" + requestNum + " Table").append("<tr class='twoCol'><td class='left-row'>" + Object.getOwnPropertyNames(jsonData)[j] + ":</td><td>" + jsonData[Object.keys(jsonData)[j]] + "</td></tr>");
+                }
+                console.log("requestNum: " + requestNum);
+                requestNum++;
+                console.log("requestNum: " + requestNum);
+            }
+
+        }
     }
 }
