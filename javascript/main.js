@@ -63,7 +63,7 @@ window.onload = function() {
                     buildTable(dnsResp, callType);
                 }
             };
-            xmlhttp.open("GET", callType + "?domain=" + domain, true);
+            xmlhttp.open("GET", "http://charlesabarnes.com/SPFtoolbox/" + callType + "?domain=" + domain, true);
             xmlhttp.send();
             
         }
