@@ -3,18 +3,53 @@
 }
 
 [class*="responseRow"] {
+    width: 100%;
+    margin-top: 40px;
+}
+[class*="responseRow"] table {
     background-color: #ccc;
     margin: 10px;
+    width: 100%;
+    border-radius: 10px;
 }
 
-[class*="responseRow"] td {
+[class*="responseRow"] table tr td {
     background-color: #ccc;
+    padding: 5px;
+
+}
+
+[class*="responseRow"] table tr:nth-child(2n) td {
+    background-color: #eee !important;
+}
+
+.twoCol:first-child td:first-child {
+    border-top-left-radius: 10px;
+}
+
+.twoCol:first-child td:last-child {
+    border-top-right-radius: 10px;
+}
+
+.twoCol:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+.twoCol:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+.oneCol:last-child td {
+    border-radius: 10px 10px 0 0;
+}
+
+.oneCol:last-child td {
+    border-radius: 0 0 10px 10px;
 }
 
 table {
     width: 100%;
     border: 0;
-    border-radius: 10px;
 }
 
 .btn, .thead {
