@@ -1,4 +1,4 @@
-# SPFtoolbox
+![Logo](http://i.imgur.com/itUhheI.png "Logo")
 
 [![CDNJS](https://img.shields.io/cdnjs/v/jquery.svg)](https://cdnjs.com/libraries/jquery)
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/daioadpjniipfipfmenkefjpdncbekcd.svg)](https://chrome.google.com/webstore/detail/daioadpjniipfipfmenkefjpdncbekcd)
@@ -6,6 +6,7 @@
 
 
 SPFtoolbox is an Application to check simple information such as SPF, DNS records, and more
+
 
 ## Releases
 
@@ -17,6 +18,10 @@ SPFtoolbox is an Application to check simple information such as SPF, DNS record
 There are many ways to contribute to SPFtoolbox.
 * **[Submit bugs](https://github.com/bulbajackel/SPFtoolbox/issues)** and help us verify fixes as they are checked in.
 * Review **[source code changes](https://github.com/bulbajackel/SPFtoolbox/pulls)**.
+
+## Screenshot
+
+![big screenshot](http://i.imgur.com/ACxZPtQ.png "Screenshot")
 
 ## Quick Start
 
