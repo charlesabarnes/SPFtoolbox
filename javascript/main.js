@@ -53,6 +53,7 @@ window.onload = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     //Clears the hint field
                     document.getElementById("txtHint").innerHTML = "";
+                    document.getElementById("loading").innerHTML= '';
                     //parse the response into a JS Object
                     dnsResp = JSON.parse(this.responseText);
 
@@ -61,11 +62,6 @@ window.onload = function() {
                     console.log(dnsResp.length);                 
 
                     buildTable(dnsResp, callType);
-                }
-            };
-            xmlhttp.onreadystatechange=function() {
-                if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-                    document.getElementById("loading").innerHTML= '';
                 }
             }
             document.getElementById("loading").innerHTML = '<div class="sk-three-bounce"><div class="sk-child sk-bounce1"></div><div class="sk-child sk-bounce2"></div><div class="sk-child sk-bounce3"></div></div>'
@@ -76,6 +72,7 @@ window.onload = function() {
     }
 
     function buildTable(jsonResp, callType) {
+        var requestNum = Date.now();
         if (jsonResp.length == 0) {
             console.log("requestNum: " + requestNum);
             $(".responseTable").prepend("<div class = 'responseRow" + requestNum + "'><table></table></div>");
