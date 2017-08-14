@@ -33,16 +33,12 @@ if(isset($_GET['domain']) && $_GET['domain']!=null){
     if((bool)ip2long($ip)){
         if(filter_var($ip,FILTER_VALIDATE_IP)){
             echo dnsbllookup($ip);
-        }else{
-            echo "Please enter a valid domain/IP";
         }
     }
     else{
         $ip = gethostbyname($ip);
         if(filter_var($ip,FILTER_VALIDATE_IP)){
             echo dnsbllookup($ip);
-        }else{
-            echo "Please enter a valid domain/IP";
         }
     }
 }
