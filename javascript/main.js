@@ -36,6 +36,9 @@ window.onload = function() {
             case "getHinfo.php":
                 return "H Info Lookup";
                 break;
+            case "blacklist.php":
+                return "Blacklist Lookup";
+                break;
         }
     }
 
