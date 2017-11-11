@@ -58,11 +58,7 @@ window.onload = function() {
                     document.getElementById("txtHint").innerHTML = "";
                     document.getElementById("loading").innerHTML= '';
                     //parse the response into a JS Object
-                    dnsResp = JSON.parse(this.responseText);
-
-                    //cosole data validation
-                    console.log(dnsResp);
-                    console.log(dnsResp.length);                 
+                    dnsResp = JSON.parse(this.responseText);        
 
                     buildTable(dnsResp, callType);
                 }
@@ -77,7 +73,6 @@ window.onload = function() {
     function buildTable(jsonResp, callType) {
         var requestNum = Date.now();
         if (jsonResp.length == 0) {
-            console.log("requestNum: " + requestNum);
             $(".responseTable").prepend("<div class = 'responseRow" + requestNum + "'><table></table></div>");
             $(".responseRow" + requestNum + " Table").append("<tr><td colspan='2' class='thead'>" + requestTitle(callType) + "</td></tr>");
             $(".responseRow" + requestNum + " Table").append("<tr><td colspan='2' style='text-align:center'>NO DATA FOUND</td></tr>");
@@ -90,18 +85,24 @@ window.onload = function() {
 
             for (i = 0, len = jsonResp.length; i < len; i++) {
                 var jsonData = jsonResp[i];
-                console.log(jsonData);
 
                 if (i != 0) {$(".responseRow" + (requestNum-1)).append("<Div class = 'responseRow" + requestNum + "'><table></table></div>");}
                 //iterates through object keys
                 for (j = 0, len2 = Object.keys(jsonData).length; j < len2; j++) {
-                    $(".responseRow" + requestNum + " Table").append("<tr class='twoCol'><td class='left-row'>" + Object.getOwnPropertyNames(jsonData)[j] + ":</td><td>" + jsonData[Object.keys(jsonData)[j]] + "</td></tr>");
+                    $(".responseRow" + requestNum + " Table").append("<tr class='twoCol'><td class='left-row'>" + Object.getOwnPropertyNames(jsonData)[j] + ":</td><td>" + cleanString(jsonData[Object.keys(jsonData)[j]].toString()) + "</td></tr>");
                 }
-                console.log("requestNum: " + requestNum);
                 requestNum++;
-                console.log("requestNum: " + requestNum);
             }
 
         }
     }
+
+    function cleanString(data) {
+        return data
+             .replace(/&/g, "&amp;")
+             .replace(/</g, "&lt;")
+             .replace(/>/g, "&gt;")
+             .replace(/"/g, "&quot;")
+             .replace(/'/g, "&#039;");
+     }
 }
