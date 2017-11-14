@@ -88,8 +88,15 @@ window.onload = function() {
 
                 if (i != 0) {$(".responseRow" + (requestNum-1)).append("<Div class = 'responseRow" + requestNum + "'><table></table></div>");}
                 //iterates through object keys
-                for (j = 0, len2 = Object.keys(jsonData).length; j < len2; j++) {
-                    $(".responseRow" + requestNum + " Table").append("<tr class='twoCol'><td class='left-row'>" + Object.getOwnPropertyNames(jsonData)[j] + ":</td><td>" + cleanString(jsonData[Object.keys(jsonData)[j]].toString()) + "</td></tr>");
+                if(callType === "blacklist.php"){
+                    for (j = 0, len2 = Object.keys(jsonData).length; j < len2; j++) {  
+                        $(".responseRow" + requestNum + " Table").append("<tr class='twoCol'><td class='left-row'>" + Object.getOwnPropertyNames(jsonData)[j] + ":</td><td>" + jsonData[Object.keys(jsonData)[j]] + "</td></tr>");
+                    }
+                    
+                } else {
+                    for (j = 0, len2 = Object.keys(jsonData).length; j < len2; j++) {  
+                        $(".responseRow" + requestNum + " Table").append("<tr class='twoCol'><td class='left-row'>" + Object.getOwnPropertyNames(jsonData)[j] + ":</td><td>" + cleanString(jsonData[Object.keys(jsonData)[j]].toString()) + "</td></tr>");
+                    }
                 }
                 requestNum++;
             }
@@ -99,10 +106,10 @@ window.onload = function() {
 
     function cleanString(data) {
         return data
-             .replace(/&/g, "&amp;")
-             .replace(/</g, "&lt;")
-             .replace(/>/g, "&gt;")
-             .replace(/"/g, "&quot;")
-             .replace(/'/g, "&#039;");
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
      }
 }
