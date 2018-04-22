@@ -39,6 +39,9 @@ window.onload = function() {
             case "blacklist.php":
                 return "Blacklist Lookup";
                 break;
+            case "getPort.php":
+                return "Check open Ports";
+                break;
         }
     }
 
