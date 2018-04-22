@@ -8,13 +8,13 @@ header("Access-Control-Allow-Origin: *");
 class Port {
     function getPort($hostname) {
       $i = 0;
-      $ports = array(22, 25, 53, 80, 443, 465, 587, 993, 5222, 5269);
-        foreach ($ports as $port) {
+      $ports = array(22 => "SSH", 25 => "SMTP", 53 => "DNS", 80 => "HTTP", 443 => "HTTPS", 465 => "SMTPS", 587 => "IMAP", 993 => "IMAPS", 5222 => "XMPP Jabber", 5269 => "Server to server Jabber");
+        foreach ($ports as $port => $protocole) {
             $fp = @fsockopen($hostname, $port, $errno, $errstr, 5);
             if (!$fp) {
-                echo "Port ", $port, " is closed" . "\n";
+                echo $protocole, " : Port ", $port, " is closed" . "\n";
             } else {
-                echo "Port ", $port, " is open" . "\n";
+                echo $protocole, " : Port ", $port, " is open" . "\n";
                 if ($fp)
                 {
                     @fclose($x); //close connection
