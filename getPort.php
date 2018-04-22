@@ -26,7 +26,7 @@ class Port {
 }
 
 $object = new Port;
-$object->getDNS($_GET['domain']);
+$object->getPort($_GET['domain']);
 
 echo json_encode($result['rawdata'], JSON_PRETTY_PRINT);
 ?>
