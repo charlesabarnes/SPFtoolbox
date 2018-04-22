@@ -12,9 +12,9 @@ class Port {
         foreach ($ports as $port) {
             $fp = @fsockopen($hostname, $port, $errno, $errstr, 5);
             if (!$fp) {
-                echo "Port ", $port, " is open";
+                echo "Port ", $port, " is closed" . "\n";
             } else {
-                echo "Port ", $port, " is closed";
+                echo "Port ", $port, " is open" . "\n";
                 if ($fp)
                 {
                     @fclose($x); //close connection
