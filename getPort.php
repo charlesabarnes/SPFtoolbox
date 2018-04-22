@@ -24,7 +24,7 @@ function getPort($hostname) {
 }
 
 $domain = $_GET['domain'];
-if(isset($_GET['domain']) && $_GET['domain']!=null){
+if(isset($domain) && $domain!=null){
    if(filter_var($domain,FILTER_VALIDATE_DOMAIN) or filter_var($domain,FILTER_VALIDATE_IP)){
         echo getPort($domain);
    }else{
