@@ -40,7 +40,7 @@ window.onload = function() {
                 return "Blacklist Lookup";
                 break;
             case "getPort.php":
-                return "Check open Ports";
+                return "Ports Lookup";
                 break;
         }
     }
