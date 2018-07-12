@@ -17,6 +17,7 @@ function getPorts($hostname) {
           }
         }
         echo "[{\"";
+        echo $hostname."\": \"\",\"";
         echo $result;
         echo "end of list\": \"end of list\"}]";
 }
