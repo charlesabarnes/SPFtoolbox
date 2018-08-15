@@ -7,7 +7,6 @@
 
 SPFtoolbox is an Application to check simple information such as SPF, DNS records, and more
 
-
 ## Releases
 
 * **[Latest Release](https://github.com/bulbajackel/SPFtoolbox/releases/latest)**
@@ -23,7 +22,13 @@ There are many ways to contribute to SPFtoolbox.
 
 ![big screenshot](http://i.imgur.com/ACxZPtQ.png "Screenshot")
 
-## Quick Start
+## How to install SPFToolBox
+* **You have a Yunohost Server**
+<br>
+
+[![Install SPFToolBox with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=spftoolbox)
+
+* **Install manually**
 
 1. Dowload the **[latest release](https://github.com/bulbajackel/SPFtoolbox/releases/latest)** of SPFtoolbox
 2. Upload the contents to your webserver enabled with PHP 5.3+
