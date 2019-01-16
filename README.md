@@ -28,6 +28,9 @@ There are many ways to contribute to SPFtoolbox.
 
 [![Install SPFToolBox with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=spftoolbox)
 
+**Heroku**
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/bulbajackel/SPFtoolbox)
+
 * **Install manually**
 
 1. Dowload the **[latest release](https://github.com/bulbajackel/SPFtoolbox/releases/latest)** of SPFtoolbox
@@ -38,11 +41,9 @@ There are many ways to contribute to SPFtoolbox.
 
 ## Questions, Concerns, and Feature Request
 
-* Please create an **[issue](https://github.com/bulbajackel/SPFtoolbox/issues)** or send me an email if you have feedback to give 
+* Please create an **[issue](https://github.com/bulbajackel/SPFtoolbox/issues)** or send me an email if you have feedback to give
 
 ### This also comes as an extension!
 * https://chrome.google.com/webstore/detail/daioadpjniipfipfmenkefjpdncbekcd
 
 Created by **[Charles Barnes](http://charlesabarnes.com)**
-
-
