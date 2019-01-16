@@ -24,7 +24,6 @@ There are many ways to contribute to SPFtoolbox.
 
 ## How to install SPFToolBox
 * **You have a Yunohost Server**
-<br>
 
 [![Install SPFToolBox with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=spftoolbox)
 
