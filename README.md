@@ -9,14 +9,14 @@ SPFtoolbox is an Application to check simple information such as SPF, DNS record
 
 ## Releases
 
-* **[Latest Release](https://github.com/bulbajackel/SPFtoolbox/releases/latest)**
-* **[All Releases](https://github.com/bulbajackel/SPFtoolbox/releases)**
+* **[Latest Release](https://github.com/charlesabarnes/SPFtoolbox/releases/latest)**
+* **[All Releases](https://github.com/charlesabarnes/SPFtoolbox/releases)**
 
 ## Contribute
 
 There are many ways to contribute to SPFtoolbox.
-* **[Submit bugs](https://github.com/bulbajackel/SPFtoolbox/issues)** and help us verify fixes as they are checked in.
-* Review **[source code changes](https://github.com/bulbajackel/SPFtoolbox/pulls)**.
+* **[Submit bugs](https://github.com/charlesabarnes/SPFtoolbox/issues)** and help us verify fixes as they are checked in.
+* Review **[source code changes](https://github.com/charlesabarnes/SPFtoolbox/pulls)**.
 
 ## Screenshot
 
@@ -29,11 +29,11 @@ There are many ways to contribute to SPFtoolbox.
 
 * **Heroku**
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/bulbajackel/SPFtoolbox)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/charlesabarnes/SPFtoolbox)
 
 * **Install manually**
 
-1. Dowload the **[latest release](https://github.com/bulbajackel/SPFtoolbox/releases/latest)** of SPFtoolbox
+1. Dowload the **[latest release](https://github.com/charlesabarnes/SPFtoolbox/releases/latest)** of SPFtoolbox
 2. Upload the contents to your webserver enabled with PHP 5.3+
 3. Extract the contents of the zip file on your server to your desired directory.
 4. Navigate to index.html
@@ -41,7 +41,7 @@ There are many ways to contribute to SPFtoolbox.
 
 ## Questions, Concerns, and Feature Request
 
-* Please create an **[issue](https://github.com/bulbajackel/SPFtoolbox/issues)** or send me an email if you have feedback to give
+* Please create an **[issue](https://github.com/charlesabarnes/SPFtoolbox/issues)** or send me an email if you have feedback to give
 
 ### This also comes as an extension!
 * https://chrome.google.com/webstore/detail/daioadpjniipfipfmenkefjpdncbekcd
