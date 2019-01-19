@@ -1,0 +1,7 @@
+{
+  "name": "SPFtoolbox",
+  "description": "SPFtoolbox is a Javascript and PHP app to look up DNS records such as SPF, MX, Whois, and more",
+  "repository": "https://github.com/charlesabarnes/SPFtoolbox",
+  "logo": "https://camo.githubusercontent.com/27959a1d2c0909d820c9aff1428a9e9b55ae1a0e/687474703a2f2f692e696d6775722e636f6d2f697455686865492e706e67",
+  "keywords": ["whois", "whois-lookup", "spf", "mx", "records-check"]
+}
