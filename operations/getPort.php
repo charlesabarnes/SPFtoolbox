@@ -1,9 +1,4 @@
 <?php
-header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-header("Cache-Control: post-check=0, pre-check=0", false);
-header("Pragma: no-cache");
-header('Content-Type: application/json');
-header("Access-Control-Allow-Origin: *");
 
 function getPorts($hostname) {
       $ports = array(22 => "SSH", 25 => "SMTP", 53 => "DNS", 80 => "HTTP", 443 => "HTTPS", 465 => "SMTPS", 587 => "IMAP", 993 => "IMAPS", 5222 => "XMPP Jabber", 5269 => "Server Jabber");

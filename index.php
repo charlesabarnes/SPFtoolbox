@@ -43,15 +43,16 @@
             <div class="col-md-6">
                     <span class="form-label">Domain:&nbsp;</span><input type="text" name="domain" id="domain" class="form-control">
                     <select id="file" class="form-control">
-                        <option value="getAll.php">All</option>
-                        <option value="getA.php">IP</option>
-                        <option value="getAAAA.php">IPV6</option>
-                        <option value="getMx.php">Mx</option>
-                        <option value="getTxt.php">SPF/TXT</option>
-                        <option value="blacklist.php">Blacklist Check</option>
-                        <option value="getWhois.php">Whois</option>
-                        <option value="getPort.php">Check Ports</option>
-                        <option value="getHinfo.php">hinfo</option>
+                        <option value="all">All</option>
+                        <option value="a">IP</option>
+                        <option value="aaaa">IPV6</option>
+                        <option value="mx">Mx</option>
+                        <option value="txt">SPF/TXT</option>
+                        <option value="blacklist">Blacklist Check</option>
+                        <option value="whois">Whois</option>
+                        <option value="port">Check Ports</option>
+                        <option value="hInfo">hinfo</option>
+                        <option value="reverseLookup">Host By IP/Reverse Lookup</option>
                     </select>
                     <input type="button" id="submit" value="submit" class="form-control btn"/>
             </div>
