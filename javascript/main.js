@@ -10,43 +10,46 @@ window.onload = function() {
     var requestNum = 0;
     //Choose the correct script to run based on dropdown selection
     document.getElementById("submit").onclick = function callRoute() {
-            returnDnsDetails(document.getElementById("domain").value, document.getElementById("file").value)
+            returnDnsDetails(document.getElementById("domain").value, document.getElementById("file").value, document.getElementById("port").value)
     }
 
     function requestTitle(callType){
         switch(callType){
-            case "getTxt.php":
+            case "txt":
                 return "SPF/TXT Lookup";
                 break;
-            case "getMx.php":
+            case "mx":
                 return "MX Lookup";
                 break;
-            case "getA.php":
+            case "a":
                 return "IP Lookup";
                 break;
-            case "getAll.php":
+            case "all":
                 return "All available DNS records";
                 break;
-            case "getAAAA.php":
+            case "aaaa":
                 return "IPV6 Lookup";
                 break;
-            case "getWhois.php":
+            case "whois":
                 return "Who Is Lookup";
                 break;
-            case "getHinfo.php":
+            case "hinfo":
                 return "H Info Lookup";
                 break;
-            case "blacklist.php":
+            case "blacklist":
                 return "Blacklist Lookup";
                 break;
-            case "getPort.php":
+            case "port":
                 return "Ports Lookup";
+                break;
+            case "reverseLookup":
+                return "Host Lookup";
                 break;
         }
     }
 
     //Get DNS Details
-    function returnDnsDetails(domain, callType) {
+    function returnDnsDetails(domain, callType, port) {
         //checks for valid input
         if (domain.length == 0) {
             document.getElementById("txtHint").innerHTML = " Please enter a valid domain";
@@ -67,7 +70,7 @@ window.onload = function() {
                 }
             }
             document.getElementById("loading").innerHTML = '<div class="sk-three-bounce"><div class="sk-child sk-bounce1"></div><div class="sk-child sk-bounce2"></div><div class="sk-child sk-bounce3"></div></div>'
-            xmlhttp.open("GET", callType + "?domain=" + domain, true);
+            xmlhttp.open("GET", "operations?domain=" + domain + "&request=" + callType + "&port=" + port, true);
             xmlhttp.send();
             
         }
@@ -115,4 +118,13 @@ window.onload = function() {
             .replace(/"/g, "&quot;")
             .replace(/'/g, "&#039;");
      }
+
+}
+
+function showAdditionalFields() {
+    if(document.getElementById("file").value === 'port') {
+        document.getElementById("port-container").style.visibility="visible" ;   
+    } else {
+        document.getElementById("port-container").style.visibility="hidden";  
+    }
 }
