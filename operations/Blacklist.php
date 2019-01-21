@@ -64,10 +64,10 @@ class Blacklist implements OperationInterface{
             $listed = '';
             foreach(self::LOOKUP_HOSTS as $host){
                 if(checkdnsrr($reverse_ip.".".$host.".","A")){
-                    $listed.=$host."\": \"&#10006;&#10006;&#10006;&#10006;&#10006;&#10006;&#10006;&#10006;\",\"";
+                    $listed.=$host."\": \"FAIL. The domain is listed on a blacklist\",\"";
                 }
                 else {
-                    $listed.=$host."\": \"&#10004;\",\"";
+                    $listed.=$host."\": \"OK\",\"";
                 }
             }
         }
