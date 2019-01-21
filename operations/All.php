@@ -1,4 +1,5 @@
 <?php
+include_once('./OperationInterface.php');
 
 class All implements OperationInterface{
     public function getOutput($hostname){

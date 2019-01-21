@@ -43,15 +43,15 @@
             <div class="col-md-6">
                     <span class="form-label">Domain:&nbsp;</span><input type="text" name="domain" id="domain" class="form-control">
                     <select id="file" class="form-control">
-                        <option value="all">All</option>
-                        <option value="a">IP</option>
-                        <option value="aaaa">IPV6</option>
-                        <option value="mx">Mx</option>
+                        <option value="all">Get All Simple DNS Records</option>
+                        <option value="a">IP/Get A Record</option>
+                        <option value="aaaa">IPV6/Get AAAA Record</option>
+                        <option value="mx">Mx/Get MX Record</option>
                         <option value="txt">SPF/TXT</option>
                         <option value="blacklist">Blacklist Check</option>
                         <option value="whois">Whois</option>
-                        <option value="port">Check Ports</option>
-                        <option value="hInfo">hinfo</option>
+                        <option value="port">Check Port</option>
+                        <option value="hinfo">Hinfo/Get Hardware Information</option>
                         <option value="reverseLookup">Host By IP/Reverse Lookup</option>
                     </select>
                     <input type="button" id="submit" value="submit" class="form-control btn"/>
