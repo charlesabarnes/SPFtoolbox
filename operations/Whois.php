@@ -4,7 +4,7 @@ include_once('./phpwhois/whois.main.php');
 include_once('./phpwhois/whois.utils.php');
 include_once('./OperationInterface.php');
 
-class Whois implements OperationInterface{
+class WhoisOutput implements OperationInterface{
   public function getOutput($hostname){
     $whois = new Whois();
     $query = $_GET['domain'];

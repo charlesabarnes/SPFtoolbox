@@ -48,7 +48,7 @@ if(isset($domain) && $domain!=null){
         break;
       case 'whois':
         include_once('./Whois.php');
-        $object = new Whois;
+        $object = new WhoisOutput;
         break;
       default:
         echo '[{"error": "Please check a valid DNS type"}]';
