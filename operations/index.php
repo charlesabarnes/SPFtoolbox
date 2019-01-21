@@ -43,7 +43,7 @@ if(isset($domain) && $domain !=null){
       break;
     case 'txt':
       include_once('./Txt.php');
-      $object = new AAAA;
+      $object = new Txt;
       break;
     case 'whois':
       include_once('./Whois.php');
