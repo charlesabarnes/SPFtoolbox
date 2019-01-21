@@ -366,8 +366,9 @@ while (list($key,$val) = each($rawdata))
 					$var = '$r'.getvarname($field);
 					$itm = trim(substr($val,$pos+strlen($match)));
 
-					if ($itm!='')
-						eval($var.'="'.str_replace('"','\"',$itm).'";');
+					if ($itm!='') {
+						$$var = str_replace('"','\"',$itm);
+					}
 					}
 
 				if (!$scanall)
@@ -377,15 +378,20 @@ while (list($key,$val) = each($rawdata))
 		}
 	}
 
-if (empty($r))
-	{
-	if ($hasreg) $r['registered'] = 'no';
-	}
+if (empty($r)){
+	if ($hasreg) {
+		$r = [];
+		$r['registered'] = 'no';
+	} 
+}
 else
 	{
-	if ($hasreg) $r['registered'] = 'yes';
+		if ($hasreg) {
+			$r = [];
+			$r['registered'] = 'yes';
+			$r = format_dates($r, $dateformat);
+		} 
 
-	$r = format_dates($r, $dateformat);
 	}
 
 return $r;
