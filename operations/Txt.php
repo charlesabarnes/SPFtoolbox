@@ -1,4 +1,5 @@
 <?php
+include_once('./OperationInterface.php');
 
 class Txt implements OperationInterface{
     public function getOutput($hostname){

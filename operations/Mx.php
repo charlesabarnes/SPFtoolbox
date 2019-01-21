@@ -1,5 +1,5 @@
 <?php
-
+include_once('./OperationInterface.php');
 
 class Mx implements OperationInterface{
     public function getOutput($hostname){

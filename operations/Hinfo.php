@@ -1,4 +1,5 @@
 <?php
+include_once('./OperationInterface.php');
 
 class Hinfo implements OperationInterface{
     public function getOutput($hostname){

@@ -26,28 +26,32 @@ if(isset($domain) && $domain!=null){
         include_once('./Blacklist.php');
         $object = new Blacklist;
         break;
-      case 'port':
-        include_once('./Port.php');
-        $object = new Port('80');
-        break;
-      case 'whois':
-        include_once('./AAAA.php');
-        $object = new AAAA;
-        break;
       case 'hinfo':
-        include_once('./AAAA.php');
-        $object = new AAAA;
+        include_once('./Hinfo.php');
+        $object = new Hinfo;
         break;
       case 'mx':
-        include_once('./AAAA.php');
-        $object = new AAAA;
+        include_once('./Mx.php');
+        $object = new Mx;
+        break;
+      case 'port':
+        include_once('./Port.php');
+        $object = new Port($_GET['port']);
+        break;
+      case 'reverseLookup':
+        include_once('./ReverseLookup.php');
+        $object = new ReverseLookup;
         break;
       case 'txt':
-        include_once('./AAAA.php');
+        include_once('./Txt.php');
         $object = new AAAA;
         break;
+      case 'whois':
+        include_once('./Whois.php');
+        $object = new Whois;
+        break;
       default:
-        # code...
+        echo '[{"error": "Please check a valid DNS type"}]';
         break;
     }
     print_r($object->getOutput($domain));
