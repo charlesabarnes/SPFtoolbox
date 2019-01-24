@@ -10,6 +10,7 @@
 <meta http-equiv="expires" content="0" />
 <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
 <meta http-equiv="pragma" content="no-cache" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <meta name="msapplication-TileColor" content="#44c0f0">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -66,7 +67,61 @@
         <div class="row">
             <div class="col-md-6">
                 <span id="txtHint" style="color: red;"></span>
-                <span id="loading"></span>
+                <div id="loading">
+                <div class="info">
+                <h3>About SPF Toolbox</h3>
+                <span>SPF Toolbox was created to be an easy, free open source way for people to get information about their domain. Please click the link in the top right to let me know if you have any questions or suggestions for the app.</span>
+                <br/>
+                <br/>
+                <br/>
+                    <table>
+                        <tr>
+                            <th>Query</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>IP/Get A Record</td>
+                            <td>An A Record is used to associate a domain name with an IP(v4) address. This query checks for the A records set on the domain</td>
+                        </tr>
+                        <tr>
+                            <td>IPV6/Get AAAA Record</td>
+                            <td>An AAAA Record is used to associate a domain name with an IP(v6) address. This query checks for the AAAA records set on the domain</td>
+                        </tr>
+                        <tr>
+                            <td>Mx/Get MX Record</td>
+                            <td>MX stands for Mail Exchanger.  This query is used to get the mail server used for accepting emails on the specified domain.</td>
+                        </tr>
+                        <tr>
+                            <td>SPF/TXT</td>
+                            <td>A SPF Record is used to indicate which email hosts is authorized to send mail on the specified domain's behalf.  This query is used to get the authorized domains</td>
+                        </tr>
+                        <tr>
+                            <td>Blacklist Check</td>
+                            <td>This query is used to check if the specified domain is on any of the most well known email blacklist sites.  If a domain is on a blacklist the row will return a fail result.</td>
+                        </tr>
+                        <tr>
+                            <td>Whois</td>
+                            <td>This information gets whois information to see who possibly owns the domain.</td>
+                        </tr>
+                        <tr>
+                            <td>Check If Port Open/Forwarded</td>
+                            <td>You are able to Check if a specified port on a domain or IP address is open for use such as hosting</td>
+                        </tr>
+                        <tr>
+                            <td>Hinfo/Get Hardware Information</td>
+                            <td>If available, this query gets the hardware information of the server for the specified hostname</td>
+                        </tr>
+                        <tr>
+                            <td>Get All Simple DNS Records</td>
+                            <td>This query attemps to do a request for all of the available DNS information for the specified hostname.  This is not always successfull as some providers block the request.</td>
+                        </tr>
+                        <tr>
+                            <td>Host By IP/Reverse Lookup</td>
+                            <td>The query attempts to find a hostname associated with an IP address</td>
+                        </tr>
+                    </table>
+                </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -77,5 +132,10 @@
                 </div>
         </div>        
     </div>
+    <footer>
+        <br>
+        <p>Created by <a href="https://charlesabarnes.com">Charles Barnes</a> | Contact: <a href="mailto:charles@charlesabarnes.com">charles@charlesabarnes.com</a></p>
+    </footer>
 </body>
+
 </html>
