@@ -2,7 +2,7 @@
     color: #333;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-#responseArea {
+#responseArea, #domain-container, #port-container, #submit {
     width: 100%;
     display: block;
 }
