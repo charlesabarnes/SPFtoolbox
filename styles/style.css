@@ -5,6 +5,7 @@
 #responseArea, #domain-container, #port-container, #submit-container {
     width: 100%;
     display: block;
+    clear: both;
 }
 [class*="responseRow"] {
     width: 100%;
