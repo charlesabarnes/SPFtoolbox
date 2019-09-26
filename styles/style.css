@@ -1,7 +1,12 @@
 * {
     color: #333;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-
+#responseArea, #domain-container, #port-container, #submit-container {
+    width: 100%;
+    display: block;
+    clear: both;
+}
 [class*="responseRow"] {
     width: 100%;
     margin-top: 40px;
@@ -16,7 +21,6 @@
 [class*="responseRow"] table tr td {
     background-color: #ccc;
     padding: 5px;
-
 }
 
 [class*="responseRow"] table tr:nth-child(2n) td {
@@ -60,11 +64,9 @@ table {
     font-weight: bold;
     font-size: 1.5em;
     color: white;
-
 }
 
 .thead {
-    
     border-radius: 10px 10px 0 0;
 }
 
@@ -82,10 +84,6 @@ td {
     background-color: white !important;
 }
 
-hr {
-
-}
-
 caption { 
     background-color: rgb(90,85,90);
     font-weight: bold;
@@ -94,14 +92,6 @@ caption {
     padding-bottom: .7em; 
     letter-spacing: .085em;
     text-align: center !important;
-}
-
-#top-row {
-
-}
-
-input, select, .form-label {
-
 }
 
 .form-control {
@@ -119,10 +109,6 @@ input, select, .form-label {
     margin: 10px 10px 10px 0;
     text-align: center;
     padding:10 0 10 0;
-}
-
-* {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .logo-style1 {
@@ -170,10 +156,6 @@ input, select, .form-label {
         
 }
 
-
 footer {
-    clear: both;
-    position: relative;
-    height: 40px;
-    margin-top: -40px;
+    padding-top: 40px;
 }
