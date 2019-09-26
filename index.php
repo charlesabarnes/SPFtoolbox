@@ -59,7 +59,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8 col-md-offset-2">
                 <span id="txtHint" style="color: red;"></span>
                 <div id="loading">
                 <div class="info">
@@ -119,18 +119,20 @@
             </div>
         </div>
         <div class="row">
-            <div id="responseArea">
-                <div  class="responseTable">
-                        
-                </div>
-            </div>
-            <footer>
-                <div class="row text-center">
-                    <div class="col-md-12">
-                        <p>Created by <a href="https://charlesabarnes.com">Charles Barnes</a> | Contact: <a href="mailto:charles@charlesabarnes.com">charles@charlesabarnes.com</a></p>
+            <div class="col-md-8 col-md-offset-2">
+                <div id="responseArea" class="col-md-12">
+                    <div  class="responseTable">
+                            
                     </div>
                 </div>
-            </footer>
+                <footer>
+                    <div class="row text-center">
+                        <div class="col-md-12">
+                            <p>Created by <a href="https://charlesabarnes.com">Charles Barnes</a> | Contact: <a href="mailto:charles@charlesabarnes.com">charles@charlesabarnes.com</a></p>
+                        </div>
+                    </div>
+                </footer>
+            </div>
         </div>        
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
