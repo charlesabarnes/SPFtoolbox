@@ -65,7 +65,7 @@ window.onload = function() {
                     document.getElementById("loading").innerHTML= '';
                     //parse the response into a JS Object
                     dnsResp = JSON.parse(this.responseText);        
-
+                    console.log(this.responseText);
                     buildTable(dnsResp, callType);
                 }
             }
