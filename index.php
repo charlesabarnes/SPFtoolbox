@@ -6,7 +6,6 @@ header("Expires: Tue, 01 Jan 1980 1:00:00 GMT");
 header("Pragma: no-cache");
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
