@@ -27,7 +27,7 @@ class Port implements OperationInterface{
       } else {
         $result = 'closed';;
       }
-      $portArray .= "\"Port $port[$i]\": \"Is $result\",\n";
+      $portArray .= "\"$port[$i]\": \"Is $result\",\n";
     }
     $result = "[{\n";
     $result .= rtrim($portArray, ",\n");
