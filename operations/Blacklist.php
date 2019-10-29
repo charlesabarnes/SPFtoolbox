@@ -2,7 +2,7 @@
 include_once('./OperationInterface.php');
 
 class Blacklist implements OperationInterface{
-    const LOOKUP_HOSTS = array(
+    const LOOKUP_HOSTS = [
         "babl.rbl.webiron.net",
         "cabl.rbl.webiron.net",
         "stabl.rbl.webiron.net",
@@ -53,7 +53,7 @@ class Blacklist implements OperationInterface{
         "rbl.realtimeblacklist.com",
         "b.barracudacentral.org",
         "virbl.dnsbl.bit.nl"
-    ); 
+    ]; 
 
     const ERROR_OBJECT = '[{"error": "Please enter a valid domain/IP"}]';
 
