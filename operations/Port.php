@@ -5,13 +5,13 @@ include_once('./OperationInterface.php');
 
 class Port implements OperationInterface{
   private $port;
-  private $ports = array(25, 53, 80 , 443, 465, 587, 993); // Default ports
+  private $ports = [25, 53, 80 , 443, 465, 587, 993]; // Default ports
   
   function __construct($port = 80) {
     if ($port == ""){
       $this->port = $this->ports;
     } else {
-      $this->port = array($port);
+      $this->port = [$port];
     }
   }
   
