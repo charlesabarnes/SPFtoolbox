@@ -53,6 +53,7 @@ header("Pragma: no-cache");
                             <option value="aaaa">IPV6/Get AAAA Record</option>
                             <option value="mx">Mx/Get MX Record</option>
                             <option value="txt">SPF/TXT</option>
+							<option value="Dmarc">DMARC</option>
                             <option value="blacklist">Blacklist Check</option>
                             <option value="whois">Whois</option>
                             <option value="port">Check If Port Open/Forwarded</option>
@@ -99,6 +100,10 @@ header("Pragma: no-cache");
                         <tr>
                             <td>SPF/TXT</td>
                             <td>A SPF Record is used to indicate which email hosts is authorized to send mail on the specified domain's behalf.  This query is used to get the authorized domains</td>
+                        </tr>
+						                        <tr>
+                            <td>DMARC</td>
+                            <td>A DMARC Record is used to authenticate email From: addresses and defines policies on where to report both authorized and unauthorized mailflow</td>
                         </tr>
                         <tr>
                             <td>Blacklist Check</td>
