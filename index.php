@@ -53,7 +53,7 @@ header("Pragma: no-cache");
                             <option value="aaaa">IPV6/Get AAAA Record</option>
                             <option value="mx">Mx/Get MX Record</option>
                             <option value="txt">SPF/TXT</option>
-							<option value="Dmarc">DMARC</option>
+                            <option value="dmarc">DMARC</option>
                             <option value="blacklist">Blacklist Check</option>
                             <option value="whois">Whois</option>
                             <option value="port">Check If Port Open/Forwarded</option>

@@ -21,9 +21,9 @@ window.onload = function() {
             case "mx":
                 return "MX Lookup";
                 break;
-			case "Dmarc":
-				return "DMARC";
-				break;
+            case "dmarc":
+                return "DMARC";
+                break;
             case "a":
                 return "IP Lookup";
                 break;
