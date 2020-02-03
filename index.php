@@ -101,7 +101,7 @@ header("Pragma: no-cache");
                             <td>SPF/TXT</td>
                             <td>A SPF Record is used to indicate which email hosts is authorized to send mail on the specified domain's behalf.  This query is used to get the authorized domains</td>
                         </tr>
-						                        <tr>
+                        <tr>
                             <td>DMARC</td>
                             <td>A DMARC Record is used to authenticate email From: addresses and defines policies on where to report both authorized and unauthorized mailflow</td>
                         </tr>
