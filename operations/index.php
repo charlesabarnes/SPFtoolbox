@@ -45,6 +45,10 @@ if(isset($domain) && $domain !=null){
       include_once('./Txt.php');
       $object = new Txt;
       break;
+    case 'dmarc':
+      include_once('./Dmarc.php');
+      $object = new Dmarc;
+      break;
     case 'whois':
       include_once('./Whois.php');
       $object = new WhoisOutput;
