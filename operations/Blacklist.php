@@ -41,7 +41,6 @@ class Blacklist implements OperationInterface{
         "dyna.spamrats.com",
         "spam.spamrats.com",
         "auth.spamrats.com",
-        "bl.spamcannibal.org",
         "spamtrap.drbl.drand.net",
         "hostkarma.junkemailfilter.com",
         "blacklist.hostkarma.com",
@@ -49,7 +48,6 @@ class Blacklist implements OperationInterface{
         "dnsbl.inps.de","bl.blocklist.de",
         "srnblack.surgate.net",
         "all.s5h.net",
-        "rbl.megarbl.net",
         "rbl.realtimeblacklist.com",
         "b.barracudacentral.org",
         "virbl.dnsbl.bit.nl"
