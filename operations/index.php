@@ -57,6 +57,10 @@ if(isset($domain) && $domain !=null){
       include_once('./Ping.php');
       $object = new Ping;
       break;
+    case 'traceroute':
+      include_once('./Traceroute.php');
+      $object = new Traceroute;
+      break;
     default:
       echo '[{"error": "Please check a valid DNS type"}]';
       break;

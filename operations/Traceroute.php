@@ -1,8 +1,7 @@
 <?php
 include_once('./OperationInterface.php');
 
-class Ping implements OperationInterface{
-
+class Traceroute implements OperationInterface{
 
     public function getOutput($hostname) {
       return json_encode($this->getTraceroute($hostname);, JSON_PRETTY_PRINT);

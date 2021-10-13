@@ -61,6 +61,7 @@ header("Pragma: no-cache");
                             <option value="all">Get All Simple DNS Records</option>
                             <option value="reverseLookup">Host By IP/Reverse Lookup</option>
                             <option value="ping">Ping</option>
+                            <option value="traceroute">Traceroute</option>
                         </select>
                     </div>
                     <div style="visibility: hidden" id="port-container">
@@ -133,6 +134,10 @@ header("Pragma: no-cache");
                         <tr>
                             <td>Ping</td>
                             <td>Pings the designated host</td>
+                        </tr>
+                        <tr>
+                            <td>Traceroute</td>
+                            <td>gets the route to get access to the designated address</td>
                         </tr>
                     </table>
                 </div>
