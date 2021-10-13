@@ -9,13 +9,14 @@ class Traceroute implements OperationInterface{
 
     private function getTraceroute($host) {
       $result = [];
+      $port = 33434;
+      $maximum_hops = 30;
       $dest_addr = gethostbyname ($host);
       array_push($result, "Tracerouting to destination: $dest_addr");
 
       $ttl = 1;
       while ($ttl < $maximum_hops) {
-        $port = 33434;
-        $maximum_hops = 30;
+
           // Create ICMP and UDP sockets
           $recv_socket = socket_create (AF_INET, SOCK_RAW, getprotobyname ('icmp'));
           $send_socket = socket_create (AF_INET, SOCK_DGRAM, getprotobyname ('udp'));
