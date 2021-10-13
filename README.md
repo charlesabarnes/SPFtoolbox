@@ -29,6 +29,8 @@ There are many ways to contribute to SPFtoolbox.
 
 * **Heroku**
 
+NOTE: HEROKU DOES NOT SUPPORT PING
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/charlesabarnes/SPFtoolbox)
 
 * **Install manually**
