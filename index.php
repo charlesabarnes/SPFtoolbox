@@ -132,7 +132,7 @@ header("Pragma: no-cache");
                         </tr>
                         <tr>
                             <td>Ping</td>
-                            <td>Pings the designated host/td>
+                            <td>Pings the designated host</td>
                         </tr>
                     </table>
                 </div>
