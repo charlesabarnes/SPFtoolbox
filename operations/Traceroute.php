@@ -10,7 +10,7 @@ class Traceroute implements OperationInterface{
     private function getTraceroute($host) {
         exec('traceroute '.$host.' 2>&1', $out, $code);
         if ($code) {
-            error_log($out->toString());
+            error_log(print_r($out, true));
             return [];
         }
         return [$out];
