@@ -22,7 +22,7 @@ class Traceroute implements OperationInterface{
           $send_socket = socket_create (AF_INET, SOCK_DGRAM, getprotobyname ('udp'));
 
           // Set TTL to current lifetime
-          socket_set_option ($send_socket, SOL_IP, IP_TTL, $ttl);
+          socket_set_option ($send_socket, SOL_SOCKET, IP_TTL, $ttl);
 
           // Bind receiving ICMP socket to default IP (no port needed since it's ICMP)
           socket_bind ($recv_socket, 0, 0);
