@@ -9,8 +9,8 @@ class Traceroute implements OperationInterface{
 
     private function getTraceroute($host) {
       $result = [];
-      $dest_addr = gethostbyname ($dest_url);
-      array_push($result, "Tracerouting to destination: $dest_addr\n");
+      $dest_addr = gethostbyname ($host);
+      array_push($result, "Tracerouting to destination: $dest_addr");
 
       $ttl = 1;
       while ($ttl < $maximum_hops) {
