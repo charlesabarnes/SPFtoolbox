@@ -53,6 +53,10 @@ if(isset($domain) && $domain !=null){
       include_once('./Whois.php');
       $object = new WhoisOutput;
       break;
+    case 'ping':
+      include_once('./Ping.php');
+      $object = new WhoisOutput;
+      break;
     default:
       echo '[{"error": "Please check a valid DNS type"}]';
       break;

@@ -60,6 +60,7 @@ header("Pragma: no-cache");
                             <option value="hinfo">Hinfo/Get Hardware Information</option>
                             <option value="all">Get All Simple DNS Records</option>
                             <option value="reverseLookup">Host By IP/Reverse Lookup</option>
+                            <option value="ping">Ping</option>
                         </select>
                     </div>
                     <div style="visibility: hidden" id="port-container">
@@ -128,6 +129,10 @@ header("Pragma: no-cache");
                         <tr>
                             <td>Host By IP/Reverse Lookup</td>
                             <td>The query attempts to find a hostname associated with an IP address</td>
+                        </tr>
+                        <tr>
+                            <td>Ping</td>
+                            <td>Pings the designated host/td>
                         </tr>
                     </table>
                 </div>
