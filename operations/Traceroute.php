@@ -4,7 +4,7 @@ include_once('./OperationInterface.php');
 class Traceroute implements OperationInterface{
 
     public function getOutput($hostname) {
-      return json_encode($this->getTraceroute($hostname);, JSON_PRETTY_PRINT);
+      return json_encode($this->getTraceroute($hostname), JSON_PRETTY_PRINT);
     }
 
     private function getTraceroute($host) {
