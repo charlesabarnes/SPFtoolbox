@@ -8,12 +8,16 @@ class Traceroute implements OperationInterface{
     }
 
     private function getTraceroute($host) {
-        exec('traceroute '.$host.' 2>&1', $out, $code);
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            exec('tracert '.$host, $out, $code);
+        } else {
+            exec('traceroute '.$host.' 2>&1', $out, $code);
+        }
         if ($code) {
             error_log(print_r($out, true));
             return [];
         }
-        return [$out];
+        return $out;
     }
 
 }
