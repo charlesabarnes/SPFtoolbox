@@ -1,7 +1,7 @@
 <?php
 include_once('./OperationInterface.php');
 
-class Mx implements OperationInterface{
+class Ping implements OperationInterface{
     public function getOutput($hostname){
       if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
         exec("ping -n 4 " . $host, $output, $status);
