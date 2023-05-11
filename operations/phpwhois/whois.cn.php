@@ -34,21 +34,22 @@ class cn_handler
 	{
 	function parse($data_str, $query)
 		{
-		$items = array(
+		$items = [
                 'Domain Name:' => 'domain.name',
                 'Domain Status:' => 'domain.status.',
+                'DNSSEC:' => 'domain.dnssec',
                 'ROID:' => 'domain.handle',
                 'Name Server:' => 'domain.nserver.',
-                'Registration Date:' => 'domain.created',
-                'Expiration Date:' => 'domain.expires',
+                'Registration Time:' => 'domain.created',
+                'Expiration Time:' => 'domain.expires',
                 'Sponsoring Registrar:' => 'domain.sponsor',
-                'Registrant Name:' => 'owner.name',
+                'Registrant:' => 'owner.name',
                 'Registrant Organization:' => 'owner.organization',
                 'Registrant Address:' => 'owner.address.address',
                 'Registrant Postal Code:' => 'owner.address.pcode',
                 'Registrant City:' => 'owner.address.city',
                 'Registrant Country Code:' => 'owner.address.country',
-                'Registrant Email:' => 'owner.email',
+                'Registrant Contact Email:' => 'owner.email',
                 'Registrant Phone Number:' => 'owner.phone',
                 'Registrant Fax:' => 'owner.fax',
                 'Administrative Name:' => 'admin.name',
@@ -78,14 +79,13 @@ class cn_handler
                 'Billing Email:' => 'billing.email',
                 'Billing Phone Number:' => 'billing.phone',
                 'Billing Fax:' => 'billing.fax'
-		            );
+		            ];
 
 		$r['regrinfo'] = generic_parser_b($data_str['rawdata'], $items, 'ymd');
-		$r['regyinfo'] = array(
+		$r['regyinfo'] = [
                 'referrer' => 'http://www.cnnic.net.cn',
                 'registrar' => 'China NIC'
-                );
+                ];
 		return $r;
 		}
 	}
-?>

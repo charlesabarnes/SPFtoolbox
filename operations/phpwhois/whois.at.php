@@ -61,7 +61,7 @@ class at_handler
 
 		if (isset($reg['domain']['descr']))
 			{
-			while (list($key, $val) = each($reg['domain']['descr']))
+			foreach ($reg['domain']['descr'] as $key => $val)
 				{
 				$v = trim(substr(strstr($val, ':'), 1));
 				if (strstr($val, '[organization]:'))
@@ -99,4 +99,3 @@ class at_handler
 		return $r;
 		}
 	}
-?>

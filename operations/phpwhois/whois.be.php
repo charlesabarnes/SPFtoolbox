@@ -34,34 +34,35 @@ class be_handler
 	{
 	function parse($data, $query)
 		{
-		$items = array(
-                'domain.name'		=> 'Domain:',
-                'domain.status'		=> 'Status:',
-				'domain.nserver'	=> 'Nameservers:',
-                'domain.created'	=> 'Registered:',
-                'owner'				=> 'Licensee:',
-                'admin'				=> 'Onsite Contacts:',
-                'tech'				=> 'Registrar Technical Contacts:',
-				'agent'				=> 'Registrar:',
-				'agent.uri'			=> 'Website:'
-				);
+		$items = [
+					'domain.name'		=> 'Domain:',
+					'domain.status'	=> 'Status:',
+					'domain.nserver'	=> 'Nameservers:',
+					'domain.created'	=> 'Registered:',
+					'owner'				=> 'Registrant:',
+					'tech'				=> 'Registrar Technical Contacts:',
+					'registrar'			=> 'Registrar:',
+					//'agent.name'			=> 'Name:',
+					'agent.uri'			=> 'Website:'
+					];
 
-		$trans = array(
-				'company name2:' => ''
-				);
+		$trans = [
+					'company name2:' => ''
+					];
 
 		$r['regrinfo'] = get_blocks($data['rawdata'], $items);
 
-		if ($r['regrinfo']['domain']['status'] == 'REGISTERED')
+		if ($r['regrinfo']['domain']['status'] == 'NOT AVAILABLE')
 			{
 			$r['regrinfo']['registered'] = 'yes';
-			$r['regrinfo'] = get_contacts($r['regrinfo'],$trans);
+			$r['regrinfo'] = get_contacts($r['regrinfo'], $trans);
 
-			if (isset($r['regrinfo']['agent']))
+			if (isset($r['regrinfo']['registrar']))
 				{
-				$sponsor = get_contact($r['regrinfo']['agent'],$trans);
+				$sponsor = get_contact($r['regrinfo']['registrar'], $trans);
+				$r['regrinfo']['domain']['sponsor'] = array_merge($sponsor, $r['regrinfo']['agent']);
+				unset($r['regrinfo']['registrar']);
 				unset($r['regrinfo']['agent']);
-				$r['regrinfo']['domain']['sponsor'] = $sponsor;
 				}
 
 			$r = format_dates($r, '-mdy');
@@ -74,4 +75,3 @@ class be_handler
 		return $r;
 		}
 	}
-?>

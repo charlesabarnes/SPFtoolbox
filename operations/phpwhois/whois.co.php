@@ -34,10 +34,16 @@ class co_handler
 	{
 	function parse($data_str, $query)
 		{
-		$r['regrinfo'] = generic_parser_b($data_str['rawdata'], false, '-md--y');
+		$items = [
+					  'Registrar:' => 'domain.sponsor',
+					  'Registry Expiry Date:' => 'domain.expires',
+					  'Updated Date:' => 'domain.changed',
+					  'Creation Date:' => 'domain.created',
+					  ];
+
+		$r['regrinfo'] = generic_parser_b($data_str['rawdata'], $items, 'Y-m-d');
 		$r['regyinfo']['referrer'] = 'http://www.cointernet.com.co/';
 		$r['regyinfo']['registrar'] = '.CO Internet, S.A.S.';
 		return $r;
 		}
 	}
-?>
