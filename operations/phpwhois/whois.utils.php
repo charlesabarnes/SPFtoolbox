@@ -38,21 +38,14 @@ class utils extends Whois {
 
 	function debugObject($obj,$indent=0)
 		{
-		if (is_array($obj))
+		if (is_Array($obj))
 			{
 			$return = '';
 			foreach($obj as $k => $v)
 				{
 				$return .= str_repeat('&nbsp;',$indent);
-					if (is_array($v))
-						{
-						$return .= $k."->Array\n";
-						$return .= $this->debugObject($v,$indent+1);
-						}
-					else
-						{
-						$return .= $k."->$v\n";
-						}
+				$return .= $k."->$v\n";
+				$return .= $this->debugObject($v,$indent+1);
 			}
 			return $return;
 		}
@@ -119,8 +112,8 @@ class utils extends Whois {
 
 			if (is_array($nserver))
 				{
-				reset($nserver); 
-				while (list($host, $ip) = each($nserver))
+				reset($nserver);
+				foreach ($nserver as $host => $ip)
 					{
 					$url = '<a href="'. str_replace('$0',$ip,$link)."\">$host</a>";
 					$out = str_replace($host, $url, $out);
@@ -156,4 +149,3 @@ else
 
 return '<a href="'.$url.'" target="_blank">'.$web.'</a>';
 }
-?>

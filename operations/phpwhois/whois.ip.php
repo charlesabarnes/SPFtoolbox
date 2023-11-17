@@ -91,13 +91,14 @@ class ip_handler extends WhoisClient
 
 			foreach($rwdata as $line)
 				{
+				// can be removed ??
 				if (!strncmp($line,'American Registry for Internet Numbers',38)) continue;
 
 				$p = strpos($line, '(NETBLK-');
 
 				if ($p === false) $p = strpos($line, '(NET-');
 
-				if ($p !== false)
+				if ($p !== false && strpos($line,'Parent:') === false)
 					{
 					$net = strtok(substr($line,$p+1),') ');
 					list($low,$high) = explode('-',str_replace(' ','',substr($line,$p+strlen($net)+3)));
@@ -158,6 +159,9 @@ class ip_handler extends WhoisClient
 				}
 			}
 
+		// Just to be sure we get the origianl output if something goes wrong
+
+		if (empty($result['rawdata'])) $result['rawdata'] = $rawdata;
 
 		// Normalize nameserver fields
 

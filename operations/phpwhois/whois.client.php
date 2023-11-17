@@ -60,7 +60,7 @@ class WhoisClient {
 		);
 
 	// This release of the package
-	var $CODE_VERSION = '4.2.5';
+	var $CODE_VERSION = '4.2.2';
 	
 	// Full code and data version string (e.g. 'Whois2.php v3.01:16')
 	var $VERSION;
@@ -194,12 +194,9 @@ class WhoisClient {
 
 			while (!feof($ptr))
 				{
-				if (!empty($r))
+				if (@stream_select($r,$null,$null,$this->STIMEOUT)!==false)
 					{
-					if (stream_select($r,$null,$null,$this->STIMEOUT))
-						{
-						$raw .= fgets($ptr, $this->BUFFER);
-						}
+					$raw .= fgets($ptr, $this->BUFFER);
 					}
 
 				if (time()-$start > $this->STIMEOUT)
@@ -328,7 +325,7 @@ class WhoisClient {
 		$output = '';
 		$pre = '';
 
-		while (list($key, $val)=each($lines)) {
+		foreach ($lines as $key => $val) {
 			$val = trim($val);
 
 			$pos=strpos(strtoupper($val),'<PRE>');
@@ -364,7 +361,7 @@ class WhoisClient {
 		$rawdata = array();
 		$null = 0;
 
-		while (list($key, $val)=each($output)) {
+		foreach ($ouput as $key => $val) {
 			$val=trim($val);
 			if ($val=='') {
 				if (++$null>2) continue;
@@ -523,7 +520,7 @@ class WhoisClient {
 
 		reset($a2);
 	
-		while (list($key, $val) = each($a2))
+		foreach ($a2 as $key => $val)
 			{
 			if (isset($a1[$key]))
 				{
@@ -595,4 +592,3 @@ class WhoisClient {
 		return $dns;
 		}
 }
-?>

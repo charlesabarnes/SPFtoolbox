@@ -36,7 +36,6 @@ class su_handler
 		{
 		$items = array(
                   'domain:' => 'domain.name',
-                  'registrar:' => 'domain.sponsor',
                   'state:' => 'domain.status',
                   'person:' => 'owner.name',
                   'phone:' => 'owner.phone',

@@ -65,7 +65,7 @@ array_splice($data_str['rawdata'],18,1);
 
 		if (isset($reg['domain']['descr:']))
 			{
-			while (list($key, $val) = each($reg['domain']['descr:']))
+			foreach ($reg['domain']['descr:'] as $key => $val)
 				{
 				$v = trim(substr(strstr($val, ':'), 1));
 				if (strstr($val, '[organization]:'))
@@ -103,4 +103,3 @@ array_splice($data_str['rawdata'],18,1);
 		return $r;
 		}
 	}
-?>
