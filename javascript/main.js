@@ -1,117 +1,188 @@
-$(document).ready(function(){
-    $("#domain").keyup(function(event){
-        if(event.keyCode == 13){
-            $("#submit").click();
+document.addEventListener('DOMContentLoaded', function() {
+    // Add keyup event to trigger submit when Enter is pressed
+    document.getElementById('domain').addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            document.getElementById('submit').click();
         }
     });
-});
-window.onload = function() {
-//Counts the number of requests in this session
-    var requestNum = 0;
-    //Choose the correct script to run based on dropdown selection
-    document.getElementById("submit").onclick = function callRoute() {
-            returnDnsDetails(document.getElementById("domain").value, document.getElementById("file").value, document.getElementById("port").value)
-    }
 
-    function requestTitle(callType){
-        switch(callType){
-            case "txt":
-                return "SPF/TXT Lookup";
-                break;
-            case "mx":
-                return "MX Lookup";
-                break;
-            case "dmarc":
-                return "DMARC";
-                break;
-            case "a":
-                return "IP Lookup";
-                break;
-            case "all":
-                return "All available DNS records";
-                break;
-            case "aaaa":
-                return "IPV6 Lookup";
-                break;
-            case "whois":
-                return "Who Is Lookup";
-                break;
-            case "hinfo":
-                return "H Info Lookup";
-                break;
-            case "blacklist":
-                return "Blacklist Lookup";
-                break;
-            case "port":
-                return "Ports Lookup";
-                break;
-            case "reverseLookup":
-                return "Host Lookup";
-                break;
+    // Add port input Enter key support
+    document.getElementById('port').addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            document.getElementById('submit').click();
         }
+    });
+
+    // Handle form submission
+    document.getElementById('submit').addEventListener('click', function() {
+        const domain = document.getElementById('domain').value;
+        const callType = document.getElementById('file').value;
+        const port = document.getElementById('port').value;
+        
+        returnDnsDetails(domain, callType, port);
+    });
+
+    // Map call type to display title
+    function requestTitle(callType) {
+        const titles = {
+            'txt': 'SPF/TXT Lookup',
+            'mx': 'MX Lookup',
+            'dmarc': 'DMARC',
+            'a': 'IP Lookup',
+            'all': 'All available DNS records',
+            'aaaa': 'IPV6 Lookup',
+            'whois': 'Who Is Lookup',
+            'hinfo': 'H Info Lookup',
+            'blacklist': 'Blacklist Lookup',
+            'port': 'Ports Lookup',
+            'reverseLookup': 'Host Lookup'
+        };
+        
+        return titles[callType] || 'DNS Lookup';
     }
 
-    //Get DNS Details
+    // Get DNS details using Fetch API
     function returnDnsDetails(domain, callType, port) {
-        //checks for valid input
-        if (domain.length == 0) {
-            document.getElementById("txtHint").innerHTML = " Please enter a valid domain";
+        // Validate input
+        if (!domain || domain.trim() === '') {
+            document.getElementById('txtHint').innerHTML = "Please enter a valid domain";
             return;
-        } else {
-            var xmlhttp = new XMLHttpRequest();
-            
-            xmlhttp.onreadystatechange = function () {
-                var date = new Date();
-                if (this.readyState == 4 && this.status == 200) {
-                    //Clears the hint field
-                    document.getElementById("txtHint").innerHTML = "";
-                    document.getElementById("loading").innerHTML= '';
-                    //parse the response into a JS Object
-                    dnsResp = JSON.parse(this.responseText);        
-                    buildTable(dnsResp, callType);
-                }
-            }
-            document.getElementById("loading").innerHTML = '<div class="sk-three-bounce"><div class="sk-child sk-bounce1"></div><div class="sk-child sk-bounce2"></div><div class="sk-child sk-bounce3"></div></div>'
-            xmlhttp.open("GET", "operations/?domain=" + domain + "&request=" + callType + "&port=" + port, true);
-            xmlhttp.send();
-            
         }
+        
+        // Clear previous error message
+        document.getElementById('txtHint').innerHTML = "";
+        
+        // Show loading spinner
+        document.getElementById('loading').innerHTML = 
+            createLoadingTemplate();
+        
+        // Prepare URL
+        const url = `operations/?domain=${encodeURIComponent(domain)}&request=${callType}&port=${port}`;
+        
+        // Fetch data
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Clear loading indicator
+                document.getElementById('loading').innerHTML = '';
+                
+                // Build table with data
+                buildTable(data, callType);
+            })
+            .catch(error => {
+                // Handle error
+                document.getElementById('loading').innerHTML = '';
+                document.getElementById('txtHint').innerHTML = `Error: ${error.message}. Please try again.`;
+            });
     }
 
+    // Create loading spinner template
+    function createLoadingTemplate() {
+        return `
+            <div class="sk-three-bounce">
+                <div class="sk-child sk-bounce1"></div>
+                <div class="sk-child sk-bounce2"></div>
+                <div class="sk-child sk-bounce3"></div>
+            </div>
+        `;
+    }
+
+    // Create table header template
+    function createTableHeaderTemplate(title) {
+        return `
+            <tr>
+                <td class="thead" colspan="2">${title}</td>
+            </tr>
+        `;
+    }
+
+    // Create no data template
+    function createNoDataTemplate() {
+        return `
+            <tr>
+                <td colspan="2" style="text-align: center;">NO DATA FOUND</td>
+            </tr>
+        `;
+    }
+
+    // Create data row template
+    function createDataRowTemplate(key, value, isBlacklist) {
+        const displayValue = isBlacklist ? value : cleanString(String(value));
+        return `
+            <tr class="twoCol">
+                <td class="left-row">${key}:</td>
+                <td>${displayValue}</td>
+            </tr>
+        `;
+    }
+
+    // Build results table with templating
     function buildTable(jsonResp, callType) {
-        var requestNum = Date.now();
-        if (jsonResp.length == 0) {
-            $(".responseTable").prepend("<div class = 'responseRow" + requestNum + "'><table></table></div>");
-            $(".responseRow" + requestNum + " Table").append("<tr><td colspan='2' class='thead'>" + requestTitle(callType) + "</td></tr>");
-            $(".responseRow" + requestNum + " Table").append("<tr><td colspan='2' style='text-align:center'>NO DATA FOUND</td></tr>");
+        // Generate unique ID for this result set
+        const resultId = Date.now();
+        const responseTable = document.querySelector('.responseTable');
+        
+        // Create result row container
+        const resultRow = document.createElement('div');
+        resultRow.className = 'responseRow' + resultId;
+        
+        // Check if results exist
+        if (!jsonResp || jsonResp.length === 0) {
+            resultRow.innerHTML = `
+                <table>
+                    ${createTableHeaderTemplate(requestTitle(callType))}
+                    ${createNoDataTemplate()}
+                </table>
+            `;
         } else {
-
-            //creates thes the table to store the response details each table has a unique class
-            $(".responseTable").prepend("<div class = 'responseRow" + requestNum + "'><table></table></div>");
-            //Creates title bar
-            $(".responseRow" + requestNum + " Table").append("<tr><td colspan='2' class='thead'>" + requestTitle(callType) + "</td></tr>");
-
-            for (i = 0, len = jsonResp.length; i < len; i++) {
-                var jsonData = jsonResp[i];
-
-                if (i != 0) {$(".responseRow" + (requestNum-1)).append("<Div class = 'responseRow" + requestNum + "'><table></table></div>");}
-                //iterates through object keys
-                if(callType === "blacklist.php"){
-                    for (j = 0, len2 = Object.keys(jsonData).length; j < len2; j++) {  
-                        $(".responseRow" + requestNum + " Table").append("<tr class='twoCol'><td class='left-row'>" + Object.getOwnPropertyNames(jsonData)[j] + ":</td><td>" + jsonData[Object.keys(jsonData)[j]] + "</td></tr>");
-                    }
+            // Process results with templating
+            let tableHtml = '';
+            
+            jsonResp.forEach((jsonData, index) => {
+                // Create HTML for each result object
+                if (index === 0) {
+                    // First result goes in the main table
+                    tableHtml = `<table>${createTableHeaderTemplate(requestTitle(callType))}`;
                     
+                    // Add data rows
+                    Object.entries(jsonData).forEach(([key, value]) => {
+                        tableHtml += createDataRowTemplate(key, value, callType === 'blacklist.php');
+                    });
+                    
+                    tableHtml += '</table>';
                 } else {
-                    for (j = 0, len2 = Object.keys(jsonData).length; j < len2; j++) {  
-                        $(".responseRow" + requestNum + " Table").append("<tr class='twoCol'><td class='left-row'>" + Object.getOwnPropertyNames(jsonData)[j] + ":</td><td>" + cleanString(jsonData[Object.keys(jsonData)[j]].toString()) + "</td></tr>");
-                    }
+                    // Additional results get their own tables
+                    tableHtml += `
+                        <div class="responseRow${resultId + index}">
+                            <table>
+                                ${createTableHeaderTemplate(requestTitle(callType) + ' (continued)')}
+                    `;
+                    
+                    // Add data rows
+                    Object.entries(jsonData).forEach(([key, value]) => {
+                        tableHtml += createDataRowTemplate(key, value, callType === 'blacklist.php');
+                    });
+                    
+                    tableHtml += '</table></div>';
                 }
-                requestNum++;
-            }
-
+            });
+            
+            resultRow.innerHTML = tableHtml;
         }
+        
+        // Add the new result to the top of the results area
+        responseTable.insertBefore(resultRow, responseTable.firstChild);
+        
+        // Scroll to the results
+        resultRow.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
+    // Sanitize strings to prevent XSS
     function cleanString(data) {
         return data
             .replace(/&/g, "&amp;")
@@ -119,14 +190,18 @@ window.onload = function() {
             .replace(/>/g, "&gt;")
             .replace(/"/g, "&quot;")
             .replace(/'/g, "&#039;");
-     }
+    }
+});
 
-}
-
+// Show/hide port input field based on selection
 function showAdditionalFields() {
-    if(document.getElementById("file").value === 'port') {
-        document.getElementById("port-container").style.visibility="visible" ;   
+    const fileSelect = document.getElementById('file');
+    const portContainer = document.getElementById('port-container');
+    
+    if (fileSelect.value === 'port') {
+        portContainer.style.visibility = 'visible';
+        document.getElementById('port').focus();
     } else {
-        document.getElementById("port-container").style.visibility="hidden";  
+        portContainer.style.visibility = 'hidden';
     }
 }

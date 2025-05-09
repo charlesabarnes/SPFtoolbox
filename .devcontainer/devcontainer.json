@@ -6,7 +6,7 @@
 	"image": "mcr.microsoft.com/devcontainers/php:1-8.2-bullseye",
 	"features": {
 		"ghcr.io/devcontainers-extra/features/node-asdf:0": {}
-	},
+	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
