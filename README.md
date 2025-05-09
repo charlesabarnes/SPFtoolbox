@@ -20,7 +20,7 @@ There are many ways to contribute to SPFtoolbox.
 
 ## Screenshot
 
-![big screenshot](http://i.imgur.com/ACxZPtQ.png "Screenshot")
+![big screenshot](./screenshot.png "Screenshot")
 
 ## How to install SPFToolBox
 * **You have a Yunohost Server**
