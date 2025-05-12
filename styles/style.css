@@ -10,18 +10,35 @@
   --border-radius: 6px;
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --transition: all 0.3s ease;
+
+  --bg-color: var(--light-gray);
+  --card-bg-color: white;
+  --text-color: var(--dark-gray);
+  --table-even-bg: var(--light-gray);
+  --border-color: var(--medium-gray);
+}
+
+[data-theme="dark"] {
+  --primary-color: #4fa2db;
+  --secondary-color: #3490d1;
+  --bg-color: #121212;
+  --card-bg-color: #242424;
+  --text-color: #e2e2e2;
+  --table-even-bg: #333;
+  --border-color: #444;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: var(--dark-gray);
+  color: var(--text-color);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
-  background-color: var(--light-gray);
+  background-color: var(--bg-color);
   line-height: 1.6;
 }
 
@@ -88,14 +105,14 @@ body {
 }
 
 .subtitle {
-  color: var(--dark-gray);
+  color: var(--text-color);
   font-size: 1.1rem;
   margin-top: 0.5rem;
 }
 
 /* Form Elements */
 .card {
-  background-color: white;
+  background-color: var(--card-bg-color);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
   padding: 2rem;
@@ -123,10 +140,12 @@ body {
   flex: 1;
   min-width: 200px;
   padding: 0.75rem 1rem;
-  border: 1px solid var(--medium-gray);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   font-size: 1rem;
   transition: var(--transition);
+  background-color: var(--card-bg-color);
+  color: var(--text-color);
 }
 
 .form-control:focus {
@@ -136,7 +155,7 @@ body {
 }
 
 select.form-control {
-  background-color: white;
+  background-color: var(--card-bg-color);
   cursor: pointer;
 }
 
@@ -195,7 +214,7 @@ select.form-control {
 .info th, .info td {
   padding: 1rem;
   text-align: left;
-  border-bottom: 1px solid var(--medium-gray);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .info th {
@@ -205,7 +224,7 @@ select.form-control {
 }
 
 .info tr:nth-child(even) {
-  background-color: var(--light-gray);
+  background-color: var(--table-even-bg);
 }
 
 .info tr:last-child td {
@@ -227,12 +246,12 @@ select.form-control {
 
 [class*="responseRow"] table tr td {
   padding: 1rem;
-  background-color: white;
-  border-bottom: 1px solid var(--medium-gray);
+  background-color: var(--card-bg-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 [class*="responseRow"] table tr:nth-child(2n) td {
-  background-color: var(--light-gray);
+  background-color: var(--table-even-bg);
 }
 
 [class*="responseRow"] table tr:last-child td {
@@ -290,7 +309,7 @@ select.form-control {
 footer {
   padding: 2rem 0;
   text-align: center;
-  border-top: 1px solid var(--medium-gray);
+  border-top: 1px solid var(--border-color);
   margin-top: 2rem;
 }
 
@@ -326,6 +345,93 @@ footer a:hover {
   
   .left-row {
     width: 100px;
+  }
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 100px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle-label {
+  margin-right: 8px;
+  font-weight: 600;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--dark-gray);
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--primary-color);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--primary-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+.slider .light-icon,
+.slider .dark-icon {
+  position: absolute;
+  top: 6px;
+  color: white;
+  font-size: 14px;
+}
+
+.slider .light-icon {
+  left: 7px;
+}
+
+.slider .dark-icon {
+  right: 7px;
+}
+
+@media (max-width: 768px) {
+  .theme-toggle {
+    right: 10px;
+    top: 10px;
   }
 }
 

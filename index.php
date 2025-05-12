@@ -34,6 +34,17 @@ header("Pragma: no-cache");
         </svg>
     </a>
 
+    <div class="theme-toggle">
+        <span class="theme-toggle-label">Dark Mode</span>
+        <label class="switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider">
+                <span class="light-icon">☀️</span>
+                <span class="dark-icon">🌙</span>
+            </span>
+        </label>
+    </div>
+
     <header>
         <div class="container">
             <div class="row" id="top-row">

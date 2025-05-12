@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+    initTheme();
+
     // Add keyup event to trigger submit when Enter is pressed
     document.getElementById('domain').addEventListener('keyup', function(event) {
         if (event.key === 'Enter') {
@@ -18,9 +20,37 @@ document.addEventListener('DOMContentLoaded', function() {
         const domain = document.getElementById('domain').value;
         const callType = document.getElementById('file').value;
         const port = document.getElementById('port').value;
-        
+
         returnDnsDetails(domain, callType, port);
     });
+
+    function initTheme() {
+        const savedTheme = localStorage.getItem('spftoolbox-theme');
+        const themeToggle = document.getElementById('theme-toggle');
+
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            themeToggle.checked = savedTheme === 'dark';
+        } else {
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (prefersDark) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeToggle.checked = true;
+            }
+
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                const newTheme = e.matches ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                themeToggle.checked = e.matches;
+            });
+        }
+
+        themeToggle.addEventListener('change', function() {
+            const newTheme = this.checked ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('spftoolbox-theme', newTheme);
+        });
+    }
 
     // Map call type to display title
     function requestTitle(callType) {
